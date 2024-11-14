@@ -1,111 +1,122 @@
 module datapath (
-	clk,
-	reset,
-	RegSrc,
-	RegWrite,
-	ImmSrc,
-	ALUSrc,
-	ALUControl,
-	MemtoReg,
-	PCSrc,
-	ALUFlags,
-	PC,
-	Instr,
-	ALUResult,
-	WriteData,
-	ReadData
+    input wire clk,
+    input wire reset,
+    input wire [1:0] RegSrc,
+    input wire RegWrite,
+    input wire [1:0] ImmSrc,
+    input wire ALUSrc,
+    input wire [1:0] ALUControl,
+    input wire MemtoReg,
+    input wire PCSrc,
+    output wire [3:0] ALUFlags,
+    output wire [31:0] PC,
+    input wire [31:0] Instr,
+    output wire [31:0] ALUResult,
+    output wire [31:0] WriteData,
+    input wire [31:0] ReadData
 );
-	input wire clk;
-	input wire reset;
-	input wire [1:0] RegSrc;
-	input wire RegWrite;
-	input wire [1:0] ImmSrc;
-	input wire ALUSrc;
-	input wire [1:0] ALUControl;
-	input wire MemtoReg;
-	input wire PCSrc;
-	output wire [3:0] ALUFlags;
-	output wire [31:0] PC;
-	input wire [31:0] Instr;
-	output wire [31:0] ALUResult;
-	output wire [31:0] WriteData;
-	input wire [31:0] ReadData;
-	wire [31:0] PCNext;
-	wire [31:0] PCPlus4;
-	wire [31:0] PCPlus8;
-	wire [31:0] ExtImm;
-	wire [31:0] SrcA;
-	wire [31:0] SrcB;
-	wire [31:0] Result;
-	wire [3:0] RA1;
-	wire [3:0] RA2;
-	mux2 #(32) pcmux(
-		.d0(PCPlus4),
-		.d1(Result),
-		.s(PCSrc),
-		.y(PCNext)
-	);
-	flopr #(32) pcreg(
-		.clk(clk),
-		.reset(reset),
-		.d(PCNext),
-		.q(PC)
-	);
-	adder #(32) pcadd1(
-		.a(PC),
-		.b(32'b100),
-		.y(PCPlus4)
-	);
-	adder #(32) pcadd2(
-		.a(PCPlus4),
-		.b(32'b100),
-		.y(PCPlus8)
-	);
-	mux2 #(4) ra1mux(
-		.d0(Instr[19:16]),
-		.d1(4'b1111),
-		.s(RegSrc[0]),
-		.y(RA1)
-	);
-	mux2 #(4) ra2mux(
-		.d0(Instr[3:0]),
-		.d1(Instr[15:12]),
-		.s(RegSrc[1]),
-		.y(RA2)
-	);
-	regfile rf(
-		.clk(clk),
-		.we3(RegWrite),
-		.ra1(RA1),
-		.ra2(RA2),
-		.wa3(Instr[15:12]),
-		.wd3(Result),
-		.r15(PCPlus8),
-		.rd1(SrcA),
-		.rd2(WriteData)
-	);
-	mux2 #(32) resmux(
-		.d0(ALUResult),
-		.d1(ReadData),
-		.s(MemtoReg),
-		.y(Result)
-	);
-	extend ext(
-		.Instr(Instr[23:0]),
-		.ImmSrc(ImmSrc),
-		.ExtImm(ExtImm)
-	);
-	mux2 #(32) srcbmux(
-		.d0(WriteData),
-		.d1(ExtImm),
-		.s(ALUSrc),
-		.y(SrcB)
-	);
-	alu alu(
-		SrcA,
-		SrcB,
-		ALUControl,
-		ALUResult,
-		ALUFlags
-	);
+
+    // Intermediate pipeline registers
+    reg [31:0] IF_ID_instr, IF_ID_PC;
+    reg [31:0] ID_EX_A, ID_EX_B, ID_EX_imm, ID_EX_PC;
+    reg [31:0] EX_MEM_ALUResult, EX_MEM_B;
+    reg [31:0] MEM_WB_data;
+
+    // IF Stage - Instancia del módulo if_stage
+    wire [31:0] PCNext, PCPlus4;
+    wire [31:0] IF_instr;
+    if_stage if_stage_inst (
+        .clk(clk),
+        .reset(reset),
+        .PCSrc(PCSrc),
+        .PCNext(PCNext),
+        .Instr(Instr),
+        .PC(PC),
+        .PCPlus4(PCPlus4)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            IF_ID_instr <= 0;
+            IF_ID_PC <= 0;
+        end else begin
+            IF_ID_instr <= Instr;
+            IF_ID_PC <= PC;
+        end
+    end
+
+    // ID Stage - Instancia del módulo id_stage
+    wire [31:0] A, B, imm;
+    id_stage id_stage_inst (
+        .clk(clk),
+        .reset(reset),
+        .Instr(IF_ID_instr),
+        .RegWrite(RegWrite),
+        .RegSrc(RegSrc),
+        .ImmSrc(ImmSrc),
+        .MEM_WB_data(MEM_WB_data),
+        .A(A),
+        .B(B),
+        .imm(imm)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            ID_EX_A <= 0;
+            ID_EX_B <= 0;
+            ID_EX_imm <= 0;
+            ID_EX_PC <= 0;
+        end else begin
+            ID_EX_A <= A;
+            ID_EX_B <= B;
+            ID_EX_imm <= imm;
+            ID_EX_PC <= IF_ID_PC;
+        end
+    end
+
+    // EX Stage - Instancia del módulo ex_stage
+    wire [31:0] ALU_out;
+    ex_stage ex_stage_inst (
+        .clk(clk),
+        .reset(reset),
+        .A(ID_EX_A),
+        .B(ID_EX_B),
+        .imm(ID_EX_imm),
+        .ALUSrc(ALUSrc),
+        .ALUControl(ALUControl),
+        .ALU_out(ALU_out),
+        .ALUFlags(ALUFlags)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            EX_MEM_ALUResult <= 0;
+            EX_MEM_B <= 0;
+        end else begin
+            EX_MEM_ALUResult <= ALU_out;
+            EX_MEM_B <= ID_EX_B;
+        end
+    end
+
+    // MEM Stage - Instancia del módulo mem_stage
+    mem_stage mem_stage_inst (
+        .clk(clk),
+        .reset(reset),
+        .ALUResult(EX_MEM_ALUResult),
+        .B(EX_MEM_B),
+        .MemtoReg(MemtoReg),
+        .ReadData(ReadData),
+        .WriteData(WriteData),
+        .MEM_WB_data(MEM_WB_data)
+    );
+
+    // WB Stage - Instancia del módulo wb_stage
+    wb_stage wb_stage_inst (
+        .clk(clk),
+        .reset(reset),
+        .MEM_WB_data(MEM_WB_data),
+        .ALUResult(EX_MEM_ALUResult),
+        .ALU_out(ALUResult)
+    );
+
 endmodule
