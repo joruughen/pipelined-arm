@@ -30,6 +30,18 @@ module datapath (
 	output wire [31:0] ALUResult;
 	output wire [31:0] WriteData;
 	input wire [31:0] ReadData;
+	
+	
+	// pipelined registers
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	wire [31:0] PCNext;
 	wire [31:0] PCPlus4;
 	wire [31:0] PCPlus8;
@@ -108,4 +120,5 @@ module datapath (
 		ALUResult,
 		ALUFlags
 	);
+	*/
 endmodule
