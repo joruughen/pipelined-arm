@@ -26,7 +26,7 @@ output wire FlagWriteD;
 output wire ImmSrcD;
 output wire RegSrcD;
 
-
+endmodule
 
 
 

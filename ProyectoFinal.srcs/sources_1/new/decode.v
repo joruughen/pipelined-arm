@@ -8,7 +8,7 @@ input wire [1:0] Op;
 input wire [5:0] Funct;
 input wire [3:0] Rd;
 
-
+endmodule
 /*
 module decode (
 	Op,
