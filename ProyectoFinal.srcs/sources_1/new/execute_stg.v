@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/14/2024 05:16:06 PM
-// Design Name: 
-// Module Name: execute_stg
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 
 module execute_stg(
@@ -37,7 +18,7 @@ input wire [31:0] SrcAE;
 input wire [31:0] WriteData;
 input wire [31:0] ExtImmE;
 input wire ALUSrcE;
-input wire [2:0] ALUControlE;
+input wire [1:0] ALUControlE;
 input wire [3:0] ALUFlags;
 input wire [3:0] WA3;
 output wire [3:0] WA3E;

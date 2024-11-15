@@ -1,10 +1,14 @@
+`timescale 1ns / 1ps
+
 module imem (
-	a,
-	rd
+    input wire [31:0] a,
+    output wire [31:0] rd
 );
-	input wire [31:0] a;
-	output wire [31:0] rd;
-	wire [31:0] RAM [31:0];
-	initial $readmemh("memfile.dat", RAM);
-	assign rd = RAM[a[31:2]];
+    reg [31:0] RAM [0:255]; // Adjust size as needed
+
+    initial begin
+        $readmemh("memfile_example.mem", RAM);
+    end
+
+    assign rd = RAM[a[31:2]]; // Adjust addressing as needed
 endmodule

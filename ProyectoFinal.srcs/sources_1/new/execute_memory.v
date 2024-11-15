@@ -1,69 +1,40 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/14/2024 06:44:19 PM
-// Design Name: 
-// Module Name: execute_memory
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module execute_memory (
-    clk,
-    reset,
-    ALUResultE,
-    WriteDataE,
-    WA3E,
-    RegWriteE,
-    MemToRegE,
-    MemWriteE,
-    ALUOutM,
-    WriteDataM,
-    WA3M,
-    RegWriteM,
-    MemToRegM,
-    MemWriteM
+    input wire clk,
+    input wire reset,
+    input wire [31:0] ALUResultE,   // Resultado de la ALU en Execute
+    input wire [31:0] WriteDataE,   // Datos a escribir en memoria en Execute
+    input wire [3:0] WA3E,          // Dirección del registro destino en Execute
+    input wire PCSrcE,              // Señal de salto en Execute
+    input wire RegWriteE,           // Control de escritura en registro en Execute
+    input wire MemToRegE,           // Control de selección de memoria a registro en Execute
+    input wire MemWriteE,           // Control de escritura en memoria en Execute
+    output reg [31:0] ALUOutM,      // Resultado de la ALU propagado a Memory
+    output reg [31:0] WriteDataM,   // Datos a escribir en memoria propagado a Memory
+    output reg [3:0] WA3M,          // Dirección del registro destino propagado a Memory
+    output reg PCSrcM,              // Señal de salto propagada a Memory
+    output reg RegWriteM,           // Control de escritura en registro propagado a Memory
+    output reg MemToRegM,           // Control de selección de memoria a registro en Memory
+    output reg MemWriteM            // Control de escritura en memoria en Memory
 );
-
-input wire clk;
-input wire reset;
-input wire [31:0] ALUResultE;
-input wire [31:0] WriteDataE;
-input wire [3:0] WA3E;
-input wire RegWriteE;
-input wire MemToRegE;
-input wire MemWriteE;
-output reg [31:0] ALUOutM;
-output reg [31:0] WriteDataM;
-output reg [3:0] WA3M;
-output reg RegWriteM;
-output reg MemToRegM;
-output reg MemWriteM;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
-        ALUOutM <= 0;
-        WriteDataM <= 0;
-        WA3M <= 0;
-        RegWriteM <= 0;
-        MemToRegM <= 0;
-        MemWriteM <= 0;
+        // Reinicia todas las salidas en caso de reset
+        ALUOutM <= 32'b0;
+        WriteDataM <= 32'b0;
+        WA3M <= 4'b0;
+        PCSrcM <= 1'b0;
+        RegWriteM <= 1'b0;
+        MemToRegM <= 1'b0;
+        MemWriteM <= 1'b0;
     end else begin
+        // Propaga las señales desde Execute a Memory en cada ciclo
         ALUOutM <= ALUResultE;
         WriteDataM <= WriteDataE;
         WA3M <= WA3E;
+        PCSrcM <= PCSrcE;
         RegWriteM <= RegWriteE;
         MemToRegM <= MemToRegE;
         MemWriteM <= MemWriteE;

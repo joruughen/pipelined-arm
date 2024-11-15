@@ -1,98 +1,60 @@
-module controller (
-    clk,
-    reset,
-    InstrD, 
-    PCSrcD, 
-    RegWriteD, 
-    MemToRegD,
-    MemWriteD, 
-    BranchD, 
-    ALUSrcD, 
-    FlagWriteD, 
-    ImmSrcD, 
-    RegSrcD
-);
-
-input wire clk;
-input wire reset;
-input wire [32:0] InstrD;
-output wire PCSrcD;
-output wire RegWriteD;
-output wire MemToRegD;
-output wire MemWriteD;
-output wire BranchD;
-output wire ALUSrcD;
-output wire FlagWriteD;
-output wire ImmSrcD;
-output wire RegSrcD;
-
-endmodule
-
-
-
-
-/*
+`timescale 1ns / 1ps
 
 module controller (
-	clk,
-	reset,
-	Instr,
-	ALUFlags,
-	RegSrc,
-	RegWrite,
-	ImmSrc,
-	ALUSrc,
-	ALUControl,
-	MemWrite,
-	MemtoReg,
-	PCSrc
+    input wire clk,
+    input wire reset,
+    input wire [31:0] InstrD,         // Instrucción en etapa Decode
+    input wire [3:0] FlagsE,          // Banderas de ALU en Execute
+    output wire PCSrcE,               // Señal de salto generada en Execute
+    output wire RegWriteD,            // Escritura en registro desde Decode
+    output wire MemToRegD,            // Selección de memoria a registro desde Decode
+    output wire MemWriteD,            // Escritura en memoria desde Decode
+    output wire ALUSrcD,              // Fuente de ALU en Decode
+    output wire [1:0] ALUControlD,    // Control de ALU en Decode
+    output wire [1:0] FlagWriteD,     // Escritura de banderas en Execute
+    output wire [1:0] ImmSrcD,        // Fuente de inmediato en Decode
+    output wire [1:0] RegSrcD         // Fuente de registro en Decode
 );
-	input wire clk;
-	input wire reset;
-	input wire [31:12] Instr;
-	input wire [3:0] ALUFlags;
-	output wire [1:0] RegSrc;
-	output wire RegWrite;
-	output wire [1:0] ImmSrc;
-	output wire ALUSrc;
-	output wire [1:0] ALUControl;
-	output wire MemWrite;
-	output wire MemtoReg;
-	output wire PCSrc;
-	wire [1:0] FlagW;
-	wire PCS;
-	wire RegW;
-	wire MemW;
-	
-	decode dec(
-		.Op(Instr[27:26]),
-		.Funct(Instr[25:20]),
-		.Rd(Instr[15:12]),
-		.FlagW(FlagW),
-		.PCS(PCS),
-		.RegW(RegW),
-		.MemW(MemW),
-		.MemtoReg(MemtoReg),
-		.ALUSrc(ALUSrc),
-		.ImmSrc(ImmSrc),
-		.RegSrc(RegSrc),
-		.ALUControl(ALUControl)
-	);
-	
-	condlogic cl(
-		.clk(clk),
-		.reset(reset),
-		.Cond(Instr[31:28]),
-		.ALUFlags(ALUFlags),
-		.FlagW(FlagW),
-		.PCS(PCS),
-		.RegW(RegW),
-		.MemW(MemW),
-		.PCSrc(PCSrc),
-		.RegWrite(RegWrite),
-		.MemWrite(MemWrite)
-	);
-	
-endmodule
 
-*/
+    // Señales internas
+    wire [1:0] OpD = InstrD[27:26];        // Operación desde la instrucción
+    wire [5:0] FunctD = InstrD[25:20];     // Función para determinar ALUControl
+    wire [3:0] RdD = InstrD[15:12];        // Registro destino en Decode
+    wire [3:0] CondD = InstrD[31:28];      // Condición de salto extraída de la instrucción
+
+    // Señales de control intermedias entre decode y condlogic
+    wire FlagWriteCondLogic;
+    wire MemWriteCondLogic;
+    wire RegWriteCondLogic;
+
+    // Instancia del decodificador (decode)
+    decode dec (
+        .Op(OpD),
+        .Funct(FunctD),
+        .Rd(RdD),
+        .RegWriteD(RegWriteD),
+        .MemToRegD(MemToRegD),
+        .MemWriteD(MemWriteD),
+        .ALUSrcD(ALUSrcD),
+        .FlagWriteD(FlagWriteD),
+        .ImmSrcD(ImmSrcD),
+        .RegSrcD(RegSrcD),
+        .ALUControlD(ALUControlD)
+    );
+
+    // Instancia de la Unidad de Condiciones (condlogic)
+    condlogic cond_unit (
+        .clk(clk),
+        .reset(reset),
+        .CondE(CondD),                // Condición para la ejecución de salto desde decode
+        .FlagsE(FlagsE),              // Banderas de ALU desde Execute
+        .FlagWriteE(FlagWriteD),      // Control de escritura de banderas en Execute
+        .PCSrcControlE(1'b1),         // Control de salto habilitado (puede ajustarse)
+        .RegWriteControlE(RegWriteD),
+        .MemWriteControlE(MemWriteD),
+        .PCSrcE(PCSrcE),              // Señal de salto calculada
+        .RegWriteE(RegWriteCondLogic),
+        .MemWriteE(MemWriteCondLogic)
+    );
+
+endmodule

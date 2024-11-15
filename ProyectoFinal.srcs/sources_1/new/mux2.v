@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module mux2 (
 	d0,
 	d1,

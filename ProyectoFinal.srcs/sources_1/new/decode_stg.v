@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/14/2024 04:50:01 PM
-// Design Name: 
-// Module Name: decode_stg
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module decode_stg(
     clk, 
@@ -39,7 +19,7 @@ input wire clk;
 input wire reset;
 input wire [31:0] InstrD;
 input wire Flags;
-input wire RegSrcD;
+input wire [1:0] RegSrcD; // Cambiado a vector de 2 bits
 input wire ImmSrcD;
 input wire [31:0] PCPlus8D;
 input wire [31:0] ResultW;
@@ -48,20 +28,20 @@ output wire [31:0] ExtImm;
 output wire [31:0] RD1;
 output wire [31:0] RD2;
     
-wire RA1D;
-wire RA2D;
+wire [3:0] RA1D; // Cambiado a 4 bits para adaptarse a RA1D
+wire [3:0] RA2D;
     
-mux2 ra1Dmux(
+mux2 #(4) ra1Dmux (
     .d0(InstrD[19:16]),
-    .d1(32'd15),
-    .s(RegSrcD),    
+    .d1(4'd15),
+    .s(RegSrcD[0]),    
     .y(RA1D)
 );  
-    
-mux2 ra2Dmux(
+
+mux2 #(4) ra2Dmux (
     .d0(InstrD[3:0]),
     .d1(InstrD[15:12]),
-    .s(RegSrcD),    
+    .s(RegSrcD[1]),    
     .y(RA2D)
 );
 
@@ -74,7 +54,7 @@ regfile rfile(
     .wd3(ResultW),
     .r15(PCPlus8D),
     .rd1(RD1),
-    .rd1(RD2) 
+    .rd2(RD2) 
 );
 
 extend ext(
