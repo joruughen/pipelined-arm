@@ -1,4 +1,39 @@
 module controller (
+    clk,
+    reset,
+    InstrD, 
+    PCSrcD, 
+    RegWriteD, 
+    MemToRegD,
+    MemWriteD, 
+    BranchD, 
+    ALUSrcD, 
+    FlagWriteD, 
+    ImmSrcD, 
+    RegSrcD
+);
+
+input wire clk;
+input wire reset;
+input wire [32:0] InstrD;
+output wire PCSrcD;
+output wire RegWriteD;
+output wire MemToRegD;
+output wire MemWriteD;
+output wire BranchD;
+output wire ALUSrcD;
+output wire FlagWriteD;
+output wire ImmSrcD;
+output wire RegSrcD;
+
+
+
+
+
+
+/*
+
+module controller (
 	clk,
 	reset,
 	Instr,
@@ -28,6 +63,7 @@ module controller (
 	wire PCS;
 	wire RegW;
 	wire MemW;
+	
 	decode dec(
 		.Op(Instr[27:26]),
 		.Funct(Instr[25:20]),
@@ -42,6 +78,7 @@ module controller (
 		.RegSrc(RegSrc),
 		.ALUControl(ALUControl)
 	);
+	
 	condlogic cl(
 		.clk(clk),
 		.reset(reset),
@@ -55,4 +92,7 @@ module controller (
 		.RegWrite(RegWrite),
 		.MemWrite(MemWrite)
 	);
+	
 endmodule
+
+*/

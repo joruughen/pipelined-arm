@@ -1,4 +1,16 @@
 module decode (
+    Op, 
+    Funct, 
+    Rd
+);
+
+input wire [1:0] Op;
+input wire [5:0] Funct;
+input wire [3:0] Rd;
+
+
+/*
+module decode (
 	Op,
 	Funct,
 	Rd,
@@ -61,3 +73,4 @@ module decode (
 		end
 	assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
 endmodule
+*/
