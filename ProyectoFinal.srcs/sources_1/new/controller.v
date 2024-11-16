@@ -10,7 +10,7 @@ module controller (
     output wire MemToRegD,            // Selección de memoria a registro desde Decode
     output wire MemWriteD,            // Escritura en memoria desde Decode
     output wire ALUSrcD,              // Fuente de ALU en Decode
-    output wire [1:0] ALUControlD,    // Control de ALU en Decode
+    output wire [2:0] ALUControlD,    // Control de ALU en Decode
     output wire [1:0] FlagWriteD,     // Escritura de banderas en Execute
     output wire [1:0] ImmSrcD,        // Fuente de inmediato en Decode
     output wire [1:0] RegSrcD         // Fuente de registro en Decode

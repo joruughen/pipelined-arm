@@ -4,16 +4,12 @@ module write_stg(
     MemToRegW,
     ALUOutW, 
     ReadDataW,
-    WA3M,
-    WA3W,
     ResultW
     );
     
 input wire MemToRegW;
-input wire ReadDataW;
-input wire ALUOutW;
-input wire WA3M;
-input wire WA3W;
+input wire [31:0] ReadDataW;
+input wire [31:0] ALUOutW;
 output wire [31:0] ResultW;
 
 mux2 #(32) resmux(
@@ -22,7 +18,5 @@ mux2 #(32) resmux(
     .s(MemToRegW),
     .y(ResultW)
 );
-
-assign WA3W = WA3M;
 
 endmodule

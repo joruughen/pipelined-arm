@@ -4,31 +4,35 @@ module decode_stg(
     clk, 
     reset,
     InstrD, 
-    Flags,
+    RegWriteW,
     RegSrcD, 
     ImmSrcD,
     PCPlus8D,
     ResultW,
+    WA3D,
     WA3W,
-    ExtImm,
-    RD1, 
-    RD2
+    ExtImmD,
+    RD1D, 
+    RD2D
     );
     
 input wire clk;
 input wire reset;
+
 input wire [31:0] InstrD;
-input wire Flags;
-input wire [1:0] RegSrcD; // Cambiado a vector de 2 bits
-input wire ImmSrcD;
+input wire RegWriteW;
+input wire [1:0] RegSrcD; 
+input wire [1:0] ImmSrcD;
 input wire [31:0] PCPlus8D;
 input wire [31:0] ResultW;
 input wire [3:0] WA3W;
-output wire [31:0] ExtImm;
-output wire [31:0] RD1;
-output wire [31:0] RD2;
+
+output wire [3:0] WA3D;
+output wire [31:0] ExtImmD;
+output wire [31:0] RD1D;
+output wire [31:0] RD2D;
     
-wire [3:0] RA1D; // Cambiado a 4 bits para adaptarse a RA1D
+wire [3:0] RA1D; 
 wire [3:0] RA2D;
     
 mux2 #(4) ra1Dmux (
@@ -47,20 +51,22 @@ mux2 #(4) ra2Dmux (
 
 regfile rfile(
     .clk(~clk),
-    .we3(Flags),
+    .we3(RegWriteW),
     .ra1(RA1D),
     .ra2(RA2D),
     .wa3(WA3W),
     .wd3(ResultW),
     .r15(PCPlus8D),
-    .rd1(RD1),
-    .rd2(RD2) 
+    .rd1(RD1D),
+    .rd2(RD2D) 
 );
 
-extend ext(
-    .Instr(InstrD[22:0]),
+extend extimm(
+    .Instr(InstrD[23:0]),
     .ImmSrc(ImmSrcD),
-    .ExtImm(ExtImm)
+    .ExtImm(ExtImmD)
 );
+
+assign WA3D = InstrD[15:12];
     
 endmodule

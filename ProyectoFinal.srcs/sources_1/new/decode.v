@@ -28,7 +28,7 @@ output wire ALUSrcD;               // Fuente de ALU (inmediato o registro)
 output wire [1:0] ImmSrcD;         // Fuente del inmediato
 output wire [1:0] RegSrcD;         // Fuente del registro
 output wire BranchD;               // Señal de branch
-output reg [1:0] ALUControlD;      // Control de ALU
+output reg [2:0] ALUControlD;      // Control de ALU
 
 // Señales internas
 reg [9:0] controls;                // Señales de control agrupadas

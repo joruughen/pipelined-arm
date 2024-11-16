@@ -1,5 +1,6 @@
 // Example: Test ARM processor
-E3A01003  // MOV R1, #3       (R1 = 3)
-E3A02004  // MOV R2, #4       (R2 = 4)
-E0813002  // ADD R3, R1, R2   (R3 = R1 + R2 -> R3 = 7)
-E0834002  // ADD R4, R3, R2   (R4 = R3 + R2 -> R4 = 11)
+E04F100F
+E2811007
+E04F200F
+E2822064
+E5821000

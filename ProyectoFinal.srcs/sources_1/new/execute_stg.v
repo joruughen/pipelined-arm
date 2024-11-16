@@ -1,48 +1,42 @@
 `timescale 1ns / 1ps
 
-
 module execute_stg(
-    SrcAE, 
-    WriteData, 
+    RD1E, 
+    RD2E, 
     ExtImmE, 
     ALUSrcE,
     ALUControlE, 
-    ALUFlags, 
-    WA3,
-    WA3E, 
-    WriteDataE, 
-    ALUResultE
-    );
+    ALUFlags,
+    ALUResultE,
+    WriteDataE
+);
 
-input wire [31:0] SrcAE;
-input wire [31:0] WriteData;
+input wire [31:0] RD1E;
+input wire [31:0] RD2E;
 input wire [31:0] ExtImmE;
 input wire ALUSrcE;
-input wire [1:0] ALUControlE;
-input wire [3:0] ALUFlags;
-input wire [3:0] WA3;
-output wire [3:0] WA3E;
-output wire [3:0] WriteDataE;
-output wire ALUResultE;
+input wire [2:0] ALUControlE;
+output wire [3:0] ALUFlags;
+output wire [31:0] ALUResultE;
+output wire [31:0] WriteDataE;
 
 wire [31:0] SrcBE;
 
 mux2 #(32) srcb(
-    .d0(WriteData),
+    .d0(RD2E),
     .d1(ExtImmE),
     .s(ALUSrcE),
     .y(SrcBE)
 );
 
 alu alub(
-    .a(SrcAE),
-    .b(ALUSrcE),
+    .a(RD1E),
+    .b(SrcBE),
     .ALUControl(ALUControlE),
     .Result(ALUResultE),
     .ALUFlags(ALUFlags)
 );
 
-assign WriteDataE = WriteData;
-assign WA3E = WA3;
+assign WriteDataE = RD2E;
     
 endmodule

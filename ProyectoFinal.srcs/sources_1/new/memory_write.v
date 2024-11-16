@@ -1,46 +1,64 @@
 `timescale 1ns / 1ps
 
 module memory_write(
-    clk,
-    reset,
+    clk, 
+    reset, 
+    ReadDataM,
     ALUOutM,
-    RD,
     WA3M,
-    RegWriteM,
+    PCSrcM,
+    RegWriteM, 
     MemToRegM,
-    ALUOutW,
     ReadDataW,
+    ALUOutW,
     WA3W,
+    PCSrcW,
     RegWriteW,
     MemToRegW
 );
 
 input wire clk;
 input wire reset;
+
+// EXECUTE STAGE
+// datapath signals
+input wire [31:0] ReadDataM;
 input wire [31:0] ALUOutM;
-input wire [31:0] RD;
 input wire [3:0] WA3M;
+// control signals
+input wire PCSrcM;
 input wire RegWriteM;
 input wire MemToRegM;
-output reg [31:0] ALUOutW;
-output reg [31:0] ReadDataW;
-output reg [3:0] WA3W;
+
+// MEMORY STAGE
+//datapath signals
+output reg PCSrcW;
 output reg RegWriteW;
 output reg MemToRegW;
+// control signals
+output reg [31:0] ReadDataW;
+output reg [31:0] ALUOutW;
+output reg [3:0] WA3W;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
-        ALUOutW <= 0;
-        ReadDataW <= 0;
-        WA3W <= 0;
+        // control signals
+        PCSrcW <= 0;
         RegWriteW <= 0;
         MemToRegW <= 0;
+        // datapath signals
+        ALUOutW <= 0;
+        ReadDataW <= 0;
+        WA3W <= 4'd0;
     end else begin
-        ALUOutW <= ALUOutM;
-        ReadDataW <= RD;
-        WA3W <= WA3M;
+        // control signals
+        PCSrcW <= PCSrcM;
         RegWriteW <= RegWriteM;
         MemToRegW <= MemToRegM;
+        // datapath signals
+        ALUOutW <= ALUOutM;
+        ReadDataW <= ReadDataM;
+        WA3W <= WA3M;
     end
 end
 
