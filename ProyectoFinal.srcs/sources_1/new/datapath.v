@@ -1,37 +1,29 @@
+`timescale 1ns / 1ps
+
 module datapath (
-    clk, 
-    reset, 
-    PCSrcW, 
-    PCF,
-    InstrF, 
-    RegSrcD,
-    RegWriteW, 
-    ALUControlE, 
-    ALUFlags, 
-    ALUResultE, 
-    WriteDataM, 
-    ReadDataM,
-    MemToRegW, 
-    ResultW
+    input wire clk,
+    input wire reset,
+    // control signals
+    input wire PCSrcW,
+    input wire [1:0] RegSrcD,
+    input wire [1:0] ImmSrcD,
+    input wire ALUSrcE,
+    input wire [2:0] ALUControlE,
+    // datapath signals
+    output wire [31:0] PCF,
+    output wire [31:0] InstrF,
+    output wire [3:0] ALUFlags, 
+    output wire [31:0] ALUResultE,
+    output wire [31:0] WriteDataE,
+    output wire [31:0] ReadDataM,
+    output wire [31:0] ResultW
 );
 
 
-input wire clk;
-input wire reset; 
-input wire PCSrcW;             // Cambiado a input
-output wire [31:0] PCF;
-input wire [31:0] InstrF;       // Cambiado a input
-input wire [1:0] RegSrcD;
-input wire RegWriteW;           // Cambiado a input
-input wire [2:0] ALUControlE;   // Cambiado a input
-output wire [3:0] ALUFlags; 
-output wire [31:0] ALUResultE; 
-output wire [31:0] WriteDataM; 
-input wire [31:0] ReadDataM;    // Mantener como input
-input wire MemToRegW;           // Cambiado a input
-output wire [31:0] ResultW;
-
-
+wire [31:0] WriteDataM;
+/*wire RegWriteW;
+wire MemToRegW;
+*/
 // FETCH 
 wire [31:0] PCPlus8D;
 
@@ -43,7 +35,7 @@ wire [31:0] RD2D;
 wire RegWriteD;
 wire MemToRegD;
 wire MemWriteD;
-wire [1:0] ImmSrcD;
+//wire [1:0] ImmSrcD;
 wire [3:0] WA3W;
 wire [3:0] WA3D;
 wire [2:0] ALUControlD;
@@ -59,8 +51,8 @@ wire [3:0] WA3E;
 wire RegWriteE;
 wire MemToRegE;
 wire MemWriteE;
-wire [31:0] WriteDataE;
-wire ALUSrcE;
+//wire [31:0] WriteDataE;
+//wire ALUSrcE;
 wire PCSrcE;
 wire [3:0] FlagsE;
 wire [1:0] FlagWriteE;
@@ -85,7 +77,8 @@ fetch_stg fetch_stage(
     .PCSrcW(PCSrcW),
     .ResultW(ResultW),
     .InstrF(InstrF),
-    .PCPlus8D(PCPlus8D)
+    .PCPlus8D(PCPlus8D),
+    .PCF(PCF)
 );
 
 fetch_decode f_d(

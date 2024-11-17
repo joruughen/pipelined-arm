@@ -5,90 +5,54 @@ module datapath_tb;
     // Inputs
     reg clk;
     reg reset;
-    reg [1:0] RegSrcD;
-    reg [31:0] ReadDataM;
-    reg MemToRegW;
-    reg [31:0] InstrF;
-    reg [2:0] ALUControlE;
     reg PCSrcW;
-    reg RegWriteW;
+    reg [1:0] RegSrcD;
+    reg [1:0] ImmSrcD;
+    reg ALUSrcE;
+    reg [2:0] ALUControlE;
 
     // Outputs
     wire [31:0] PCF;
-    wire [31:0] ResultW;
-    wire [31:0] WriteDataM;
+    wire [31:0] InstrF;
     wire [3:0] ALUFlags;
     wire [31:0] ALUResultE;
+    wire [31:0] WriteDataE;
+    wire [31:0] ReadDataM;
+    wire [31:0] ResultW;
 
     // Instancia del datapath
-    datapath uut (
+    datapath dp (
         .clk(clk),
         .reset(reset),
         .PCSrcW(PCSrcW),
+        .RegSrcD(RegSrcD),
+        .ImmSrcD(ImmSrcD),
+        .ALUSrcE(ALUSrcE),
+        .ALUControlE(ALUControlE),
         .PCF(PCF),
         .InstrF(InstrF),
-        .RegSrcD(RegSrcD),
-        .RegWriteW(RegWriteW),
-        .ALUControlE(ALUControlE),
         .ALUFlags(ALUFlags),
         .ALUResultE(ALUResultE),
-        .WriteDataM(WriteDataM),
+        .WriteDataE(WriteDataE),
         .ReadDataM(ReadDataM),
-        .MemToRegW(MemToRegW),
         .ResultW(ResultW)
     );
 
-    // Clock generation
+    // Generación de reloj
     initial begin
         clk = 0;
-        forever #5 clk = ~clk; // 10ns clock period
+        forever #5 clk = ~clk; // Periodo de reloj de 10ns
     end
 
-    // Test sequence
+    // Secuencia de prueba
     initial begin
-        // Initialize inputs
         reset = 1;
-        RegSrcD = 2'b00;
-        ReadDataM = 32'h00000000;
-        MemToRegW = 0;
-        InstrF = 32'hE3A01001; // MOV R1, #1
-        ALUControlE = 3'b010;  // ADD operation
-        PCSrcW = 0;
-        RegWriteW = 1;
+        // Inicialización
 
-        // Wait for reset deassertion
-        #10 reset = 0;
-
-        // Test 1: MOV instruction
-        #10 InstrF = 32'hE3A02002; // MOV R2, #2
-        RegSrcD = 2'b01;
-        ALUControlE = 3'b000; // MOV operation
-
-        // Test 2: ADD operation
-        #20 InstrF = 32'hE0803002; // ADD R3, R0, R2
-        RegSrcD = 2'b10;
-        ALUControlE = 3'b010; // ADD
-
-        // Test 3: Memory Write
-        #30 InstrF = 32'hE5812000; // STR R2, [R1]
-        ReadDataM = 32'h12345678;
-        MemToRegW = 1;
-
-        // Test 4: Branch (unconditional)
-        #40 InstrF = 32'hEA000003; // B +3
-        PCSrcW = 1;
-
-        // Finish simulation
-        #50 $finish;
-    end
-
-    // Monitor values
-    initial begin
-        $monitor("Time: %0dns | PCF: %h | InstrF: %h | ResultW: %h | WriteDataM: %h | ALUResultE: %h",
-                 $time, PCF, InstrF, ResultW, WriteDataM, ALUResultE);
-    end
-
+end
 endmodule
+
+
 
 /*
 module datapath_tb;

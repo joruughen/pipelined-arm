@@ -1,0 +1,567 @@
+
+*** Running vivado
+    with args -log datapath.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source datapath.tcl
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Sat Nov 16 13:37:24 2024
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source datapath.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1428.172 ; gain = 0.023 ; free physical = 3366 ; free virtual = 11907
+Command: read_checkpoint -auto_incremental -incremental /home/jorughen/pipelined-arm/ProyectoFinal.srcs/utils_1/imports/synth_1/top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/jorughen/pipelined-arm/ProyectoFinal.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top datapath -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 34446
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1857.824 ; gain = 423.715 ; free physical = 2627 ; free virtual = 11168
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'PCSrcD', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:119]
+INFO: [Synth 8-11241] undeclared symbol 'BranchD', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:124]
+INFO: [Synth 8-11241] undeclared symbol 'ALUSrcD', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:125]
+INFO: [Synth 8-11241] undeclared symbol 'CondD', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:129]
+INFO: [Synth 8-11241] undeclared symbol 'BranchE', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:139]
+INFO: [Synth 8-11241] undeclared symbol 'CondE', assumed default net type 'wire' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:143]
+INFO: [Synth 8-6157] synthesizing module 'datapath' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+INFO: [Synth 8-6157] synthesizing module 'fetch_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'mux2' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v:3]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v:3]
+INFO: [Synth 8-6157] synthesizing module 'flopr' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopr.v:3]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopr.v:3]
+WARNING: [Synth 8-689] width (1) of port connection 'q' does not match port width (32) of module 'flopr' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:35]
+WARNING: [Synth 8-6104] Input port 'PCF' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:35]
+INFO: [Synth 8-6157] synthesizing module 'adder' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/adder.v:3]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'adder' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/adder.v:3]
+WARNING: [Synth 8-689] width (1) of port connection 'a' does not match port width (32) of module 'adder' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:39]
+INFO: [Synth 8-6157] synthesizing module 'imem' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/imem.v:3]
+CRITICAL WARNING: [Synth 8-4445] could not open $readmem data file 'memfile_example.mem'; please make sure the file is added to project and has read permission, ignoring [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/imem.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'imem' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/imem.v:3]
+WARNING: [Synth 8-689] width (1) of port connection 'a' does not match port width (32) of module 'imem' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'fetch_stg' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_stg.v:3]
+WARNING: [Synth 8-6104] Input port 'InstrF' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:87]
+WARNING: [Synth 8-689] width (32) of port connection 'PCF' does not match port width (1) of module 'fetch_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:89]
+INFO: [Synth 8-6157] synthesizing module 'fetch_decode' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_decode.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'fetch_decode' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/fetch_decode.v:3]
+INFO: [Synth 8-6157] synthesizing module 'decode_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized0' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v:3]
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized0' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v:3]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'extend' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/extend.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'extend' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/extend.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'decode_stg' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'decode_execute' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_execute.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'decode_execute' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_execute.v:3]
+WARNING: [Synth 8-6104] Input port 'ALUControlE' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:138]
+INFO: [Synth 8-6157] synthesizing module 'execute_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/execute_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'alu' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'execute_stg' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/execute_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'execute_memory' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/execute_memory.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'execute_memory' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/execute_memory.v:3]
+INFO: [Synth 8-6157] synthesizing module 'memory_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_stg.v:3]
+INFO: [Synth 8-6157] synthesizing module 'dmem' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'dmem' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'memory_stg' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_stg.v:3]
+WARNING: [Synth 8-6104] Input port 'ReadDataM' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:190]
+INFO: [Synth 8-6157] synthesizing module 'memory_write' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_write.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'memory_write' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_write.v:3]
+WARNING: [Synth 8-6104] Input port 'PCSrcW' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:205]
+WARNING: [Synth 8-6104] Input port 'RegWriteW' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:206]
+WARNING: [Synth 8-6104] Input port 'MemToRegW' has an internal driver [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:207]
+INFO: [Synth 8-6157] synthesizing module 'write_stg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/write_stg.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'write_stg' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/write_stg.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (0#1) [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+WARNING: [Synth 8-3848] Net PCF in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:22]
+WARNING: [Synth 8-3848] Net PCSrcD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:119]
+WARNING: [Synth 8-3848] Net RegWriteD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:43]
+WARNING: [Synth 8-3848] Net MemToRegD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:44]
+WARNING: [Synth 8-3848] Net MemWriteD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:45]
+WARNING: [Synth 8-3848] Net ALUControlD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:49]
+WARNING: [Synth 8-3848] Net BranchD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:124]
+WARNING: [Synth 8-3848] Net ALUSrcD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:125]
+WARNING: [Synth 8-3848] Net FlagWriteD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:51]
+WARNING: [Synth 8-3848] Net ImmSrcD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:46]
+WARNING: [Synth 8-3848] Net Flags in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:50]
+WARNING: [Synth 8-3848] Net CondD in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:129]
+WARNING: [Synth 8-3848] Net RD2D in module/entity datapath does not have driver. [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:42]
+WARNING: [Synth 8-7129] Port a[31] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[30] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[29] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[28] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[27] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[26] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[25] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[24] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[23] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[22] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[21] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[20] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[19] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[18] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[17] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[16] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[15] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[14] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[13] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[12] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[11] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[10] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[9] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[8] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[1] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[0] in module dmem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module memory_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ImmSrcD[1] in module decode_execute is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ImmSrcD[0] in module decode_execute is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[31] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[30] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[29] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[28] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[27] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[26] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[25] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port InstrD[24] in module decode_stg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[31] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[30] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[29] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[28] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[27] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[26] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[25] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[24] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[23] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[22] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[21] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[20] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[19] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[18] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[17] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[16] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[15] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[14] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[13] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[12] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[11] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[10] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[9] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[8] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[7] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[6] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[5] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[4] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[3] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[2] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[1] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd[0] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[31] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[30] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[29] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[28] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[27] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[26] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[25] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[24] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[23] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[22] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[21] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[20] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[19] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[18] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[17] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[16] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[15] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[14] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[13] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[12] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[11] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[10] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[9] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[8] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[7] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[6] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[5] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[4] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[3] in module imem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[2] in module imem is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1934.762 ; gain = 500.652 ; free physical = 2538 ; free virtual = 11079
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1946.637 ; gain = 512.527 ; free physical = 2534 ; free virtual = 11075
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1962.641 ; gain = 528.531 ; free physical = 2530 ; free virtual = 11071
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint /home/jorughen/pipelined-arm/ProyectoFinal.srcs/utils_1/imports/synth_1/top.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1962.641 ; gain = 528.531 ; free physical = 2523 ; free virtual = 11065
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1962.641 ; gain = 528.531 ; free physical = 2523 ; free virtual = 11065
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'Result_reg' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v:14]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1970.648 ; gain = 536.539 ; free physical = 2525 ; free virtual = 11067
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : 
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   33 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 1     
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 9     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 14    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 6     
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7a35tcpg236-1 does not have CEAM library.
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2338 ; free virtual = 10885
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|datapath    | memory_stage/dtmem/RAM_reg | Implied   | 64 x 32              | RAM64X1S x 32  | 
+|datapath    | decode_stage/rfile/rf_reg  | Implied   | 16 x 32              | RAM32M x 12    | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2338 ; free virtual = 10885
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|datapath    | memory_stage/dtmem/RAM_reg | Implied   | 64 x 32              | RAM64X1S x 32  | 
+|datapath    | decode_stage/rfile/rf_reg  | Implied   | 16 x 32              | RAM32M x 12    | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2338 ; free virtual = 10885
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[2] with 1st driver pin 'ALUControlE_IBUF[2]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[2] with 2nd driver pin 'd_e/ALUControlE_reg[2]/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_execute.v:87]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[1] with 1st driver pin 'ALUControlE_IBUF[1]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[1] with 2nd driver pin 'd_e/ALUControlE_reg[1]/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_execute.v:87]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[0] with 1st driver pin 'ALUControlE_IBUF[0]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ALUControlE_IBUF[0] with 2nd driver pin 'd_e/ALUControlE_reg[0]/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode_execute.v:87]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[0] with 1st driver pin 'ReadDataM_IBUF[0]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[0] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_0_0/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[1] with 1st driver pin 'ReadDataM_IBUF[1]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[1] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_1_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[2] with 1st driver pin 'ReadDataM_IBUF[2]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[2] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_2_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[3] with 1st driver pin 'ReadDataM_IBUF[3]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[3] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_3_3/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[4] with 1st driver pin 'ReadDataM_IBUF[4]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[4] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_4_4/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[5] with 1st driver pin 'ReadDataM_IBUF[5]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[5] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_5_5/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[6] with 1st driver pin 'ReadDataM_IBUF[6]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[6] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_6_6/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[7] with 1st driver pin 'ReadDataM_IBUF[7]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[7] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_7_7/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[8] with 1st driver pin 'ReadDataM_IBUF[8]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[8] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_8_8/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[9] with 1st driver pin 'ReadDataM_IBUF[9]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[9] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_9_9/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[10] with 1st driver pin 'ReadDataM_IBUF[10]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[10] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_10_10/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[11] with 1st driver pin 'ReadDataM_IBUF[11]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[11] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_11_11/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[12] with 1st driver pin 'ReadDataM_IBUF[12]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[12] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_12_12/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[13] with 1st driver pin 'ReadDataM_IBUF[13]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[13] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_13_13/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[14] with 1st driver pin 'ReadDataM_IBUF[14]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[14] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_14_14/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[15] with 1st driver pin 'ReadDataM_IBUF[15]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[15] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_15_15/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[16] with 1st driver pin 'ReadDataM_IBUF[16]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[16] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_16_16/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[17] with 1st driver pin 'ReadDataM_IBUF[17]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[17] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_17_17/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[18] with 1st driver pin 'ReadDataM_IBUF[18]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[18] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_18_18/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[19] with 1st driver pin 'ReadDataM_IBUF[19]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[19] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_19_19/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[20] with 1st driver pin 'ReadDataM_IBUF[20]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[20] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_20_20/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[21] with 1st driver pin 'ReadDataM_IBUF[21]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[21] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_21_21/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[22] with 1st driver pin 'ReadDataM_IBUF[22]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[22] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_22_22/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[23] with 1st driver pin 'ReadDataM_IBUF[23]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[23] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_23_23/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[24] with 1st driver pin 'ReadDataM_IBUF[24]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[24] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_24_24/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[25] with 1st driver pin 'ReadDataM_IBUF[25]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[25] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_25_25/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[26] with 1st driver pin 'ReadDataM_IBUF[26]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[26] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_26_26/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[27] with 1st driver pin 'ReadDataM_IBUF[27]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[27] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_27_27/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[28] with 1st driver pin 'ReadDataM_IBUF[28]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[28] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_28_28/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[29] with 1st driver pin 'ReadDataM_IBUF[29]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[29] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_29_29/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[30] with 1st driver pin 'ReadDataM_IBUF[30]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[30] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_30_30/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[31] with 1st driver pin 'ReadDataM_IBUF[31]_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin ReadDataM_IBUF[31] with 2nd driver pin 'memory_stage/dtmem/RAM_reg_0_63_31_31/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v:16]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin PCSrcW_IBUF with 1st driver pin 'PCSrcW_IBUF_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin PCSrcW_IBUF with 2nd driver pin 'm_w/PCSrcW_reg/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_write.v:46]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RegWriteW_IBUF with 1st driver pin 'RegWriteW_IBUF_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RegWriteW_IBUF with 2nd driver pin 'm_w/RegWriteW_reg/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_write.v:47]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin MemToRegW_IBUF with 1st driver pin 'MemToRegW_IBUF_inst/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin MemToRegW_IBUF with 2nd driver pin 'm_w/MemToRegW_reg/Q' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/memory_write.v:48]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[31] with 1st driver pin 'RD1E[31]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[31] with 2nd driver pin 'RD1E[31]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[30] with 1st driver pin 'RD1E[30]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[30] with 2nd driver pin 'RD1E[30]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[29] with 1st driver pin 'RD1E[29]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[29] with 2nd driver pin 'RD1E[29]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[28] with 1st driver pin 'RD1E[28]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[28] with 2nd driver pin 'RD1E[28]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[27] with 1st driver pin 'RD1E[27]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[27] with 2nd driver pin 'RD1E[27]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[26] with 1st driver pin 'RD1E[26]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[26] with 2nd driver pin 'RD1E[26]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[25] with 1st driver pin 'RD1E[25]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[25] with 2nd driver pin 'RD1E[25]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[24] with 1st driver pin 'RD1E[24]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[24] with 2nd driver pin 'RD1E[24]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[23] with 1st driver pin 'RD1E[23]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[23] with 2nd driver pin 'RD1E[23]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[22] with 1st driver pin 'RD1E[22]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[22] with 2nd driver pin 'RD1E[22]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[21] with 1st driver pin 'RD1E[21]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[21] with 2nd driver pin 'RD1E[21]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[20] with 1st driver pin 'RD1E[20]_i_1/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:25]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin RD1D[20] with 2nd driver pin 'RD1E[20]_i_2/O' [/home/jorughen/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v:26]
+INFO: [Common 17-14] Message 'Synth 8-6859' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|       70|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |     9|
+|3     |LUT1     |     1|
+|4     |LUT2     |    70|
+|5     |LUT3     |    38|
+|6     |LUT4     |     1|
+|7     |LUT5     |    33|
+|8     |LUT6     |    40|
+|9     |RAM32M   |    10|
+|10    |RAM32X1D |     4|
+|11    |RAM64X1S |    32|
+|12    |FDCE     |   147|
+|13    |LD       |    32|
+|14    |IBUF     |    54|
+|15    |OBUF     |   101|
+|16    |OBUFT    |    31|
++------+---------+------+
+
+Report Instance Areas: 
++------+----------------+---------------+------+
+|      |Instance        |Module         |Cells |
++------+----------------+---------------+------+
+|1     |top             |               |   605|
+|2     |  d_e           |decode_execute |    78|
+|3     |  decode_stage  |decode_stg     |    45|
+|4     |    rfile       |regfile        |    45|
+|5     |  e_m           |execute_memory |    32|
+|6     |  execute_stage |execute_stg    |    71|
+|7     |    alub        |alu            |    71|
+|8     |  f_d           |fetch_decode   |    55|
+|9     |  fetch_stage   |fetch_stg      |     2|
+|10    |    pcflop      |flopr          |     2|
+|11    |  m_w           |memory_write   |   100|
+|12    |  memory_stage  |memory_stg     |    32|
+|13    |    dtmem       |dmem           |    32|
++------+----------------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 142 critical warnings and 190 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.047 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2118.055 ; gain = 683.938 ; free physical = 2345 ; free virtual = 10892
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2118.055 ; gain = 0.000 ; free physical = 2636 ; free virtual = 11184
+INFO: [Netlist 29-17] Analyzing 87 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 14 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2300.824 ; gain = 0.000 ; free physical = 2569 ; free virtual = 11117
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 78 instances were transformed.
+  LD => LDCE: 32 instances
+  RAM32M => RAM32M (inverted pins: WCLK) (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (inverted pins: WCLK) (RAMD32(x2)): 4 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+Synth Design complete | Checksum: c409c851
+INFO: [Common 17-83] Releasing license: Synthesis
+63 Infos, 126 Warnings, 102 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2300.824 ; gain = 872.652 ; free physical = 2569 ; free virtual = 11117
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1450.301; main = 1450.301; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2300.828; main = 2300.828; forked = 0.000
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2348.836 ; gain = 0.000 ; free physical = 2569 ; free virtual = 11117
+INFO: [Common 17-1381] The checkpoint '/home/jorughen/pipelined-arm/ProyectoFinal.runs/synth_1/datapath.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file datapath_utilization_synth.rpt -pb datapath_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 16 13:37:42 2024...

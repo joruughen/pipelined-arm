@@ -1,4 +1,4 @@
-module alu(input [31:0] a, b, input [2:0] ALUControl,
+module alu(input [31:0] a, b, input wire [2:0] ALUControl,
     output reg [31:0] Result, output wire [3:0] ALUFlags);
 
 wire neg, zero, carry, overflow;

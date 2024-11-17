@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Nov 16 13:37:24 2024
+# Process ID: 34417
+# Current directory: /home/jorughen/pipelined-arm/ProyectoFinal.runs/synth_1
+# Command line: vivado -log datapath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source datapath.tcl
+# Log file: /home/jorughen/pipelined-arm/ProyectoFinal.runs/synth_1/datapath.vds
+# Journal file: /home/jorughen/pipelined-arm/ProyectoFinal.runs/synth_1/vivado.jou
+# Running On        :archlinux
+# Platform          :unknown
+# Operating System  :unknown
+# Processor Detail  :AMD Ryzen 5 7530U with Radeon Graphics
+# CPU Frequency     :3529.628 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :16137 MB
+# Swap memory       :4294 MB
+# Total Virtual     :20432 MB
+# Available Virtual :12843 MB
+#-----------------------------------------------------------
+source datapath.tcl -notrace
