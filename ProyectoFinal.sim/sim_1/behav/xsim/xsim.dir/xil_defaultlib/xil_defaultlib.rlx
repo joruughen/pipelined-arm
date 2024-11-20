@@ -1,0 +1,22 @@
+0.7
+2020.2
+May 22 2024
+18:54:44
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sim_1/new/testbench.v,1732143671,verilog,,,,testbench,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/adder.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v,,adder,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/alu.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/arm.v,,alu,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/arm.v,1732144940,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/condcheck.v,,arm,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/condcheck.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/condlogic.v,,condcheck,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/condlogic.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v,,condlogic,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v,1732144521,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v,,controller,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v,1732144992,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode.v,,datapath,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decode.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v,,decode,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/dmem.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/extend.v,,dmem,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/extend.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopenr.v,,extend,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopenr.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopr.v,,flopenr,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/flopr.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/imem.v,,flopr,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/imem.v,1732138015,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v,,imem,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/mux2.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v,,mux2,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/regfile.v,1732137753,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/top.v,,regfile,,,,,,,,
+/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sources_1/new/top.v,1732141382,verilog,,/home/jorughen/Desktop/AhoraSii/pipelined-arm/ProyectoFinal.srcs/sim_1/new/testbench.v,,top,,,,,,,,

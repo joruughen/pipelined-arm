@@ -1,58 +1,96 @@
 module controller (
 	clk,
 	reset,
-	Instr,
+	InstrD,
 	ALUFlags,
-	RegSrc,
-	RegWrite,
-	ImmSrc,
-	ALUSrc,
-	ALUControl,
-	MemWrite,
-	MemtoReg,
-	PCSrc
+	RegSrcD,
+	RegWriteD,
+	ImmSrcD,
+	ALUSrcD,
+	ALUControlD,
+	MemWriteD,
+	MemtoRegD,
+	PCSrcD
 );
 	input wire clk;
 	input wire reset;
-	input wire [31:12] Instr;
-	input wire [3:0] ALUFlags;
-	output wire [1:0] RegSrc;
-	output wire RegWrite;
-	output wire [1:0] ImmSrc;
-	output wire ALUSrc;
-	output wire [1:0] ALUControl;
-	output wire MemWrite;
-	output wire MemtoReg;
-	output wire PCSrc;
-	wire [1:0] FlagW;
+	//señales para decode stage
+	input wire [31:12] InstrD;
+	
+	output wire [1:0] RegSrcD;
+	output wire RegWriteD;
+	output wire [1:0] ImmSrcD;
+	output wire ALUSrcD;
+	output wire [1:0] ALUControlD;
+	output wire MemWriteD;
+	output wire MemtoRegD;
+	output wire PCSrcD;
+	wire [3:0] CondD;
+	
+
+	
+	//Para el puente entre Decoder y Conditional Logic
+	wire FlagWD;
 	wire PCS;
 	wire RegW;
 	wire MemW;
+	
+	
+		input wire [3:0] ALUFlags;
+assign PCSrcD = 1'b0;
+/*	
+	//señales para execute stage
+	wire [31:12] InstrE;
+	// wire [3:0] ALUFlags;
+	wire [1:0] RegSrcE;
+	wire RegWriteE;
+	// wire [1:0] ImmSrcD;
+	wire ALUSrcD;
+	wire [1:0] ALUControlD;
+	wire MemWriteD;
+	wire MemtoRegD;
+	wire PCSrcD;
+	wire [3:0] Flags;
+	 
+*/	
+	//Decode Stage
+//	assign CondD = InstrD[31:28];
 	decode dec(
-		.Op(Instr[27:26]),
-		.Funct(Instr[25:20]),
-		.Rd(Instr[15:12]),
-		.FlagW(FlagW),
-		.PCS(PCS),
-		.RegW(RegW),
-		.MemW(MemW),
-		.MemtoReg(MemtoReg),
-		.ALUSrc(ALUSrc),
-		.ImmSrc(ImmSrc),
-		.RegSrc(RegSrc),
-		.ALUControl(ALUControl)
+		.Op(InstrD[27:26]),
+		.Funct(InstrD[25:20]),
+		.Rd(InstrD[15:12]),
+		.FlagW(FlagWD),
+		.PCS(PCSD),
+		.RegW(RegWD),
+		.MemW(MemWD),
+		.MemtoReg(MemtoRegD),
+		.ALUSrc(ALUSrcD),
+		.ImmSrc(ImmSrcD),
+		.RegSrc(RegSrcD),
+		.ALUControl(ALUControlD)
 	);
+	
+/*
+	flopr D_to_E(
+	   .clk(clk), 
+	   .reset(reset),
+	   .d({PCSrcD, RegWriteD, MemToRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD, ImmSrcD, CondD, Flags}),
+	   .q({})
+	   
+	)
+*/
+	
 	condlogic cl(
 		.clk(clk),
 		.reset(reset),
-		.Cond(Instr[31:28]),
+		.Cond(InstrD[31:28]),
 		.ALUFlags(ALUFlags),
-		.FlagW(FlagW),
-		.PCS(PCS),
-		.RegW(RegW),
-		.MemW(MemW),
-		.PCSrc(PCSrc),
-		.RegWrite(RegWrite),
-		.MemWrite(MemWrite)
+		.FlagW(FlagWD),
+		.PCS(PCSD),
+		.RegW(RegWD),
+		.MemW(MemWD),
+		.PCSrc(PCSrcD),
+		.RegWrite(RegWriteD),
+		.MemWrite(MemWriteD)
 	);
 endmodule

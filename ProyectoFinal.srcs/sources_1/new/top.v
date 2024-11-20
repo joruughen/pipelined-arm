@@ -11,13 +11,13 @@ module top (
 	output wire [31:0] DataAdr;
 	output wire MemWrite;
 	wire [31:0] PC;
-	wire [31:0] Instr;
+	wire [31:0] InstrF;
 	wire [31:0] ReadData;
 	arm arm(
 		.clk(clk),
 		.reset(reset),
 		.PC(PC),
-		.Instr(Instr),
+		.InstrF(InstrF),
 		.MemWrite(MemWrite),
 		.ALUResult(DataAdr),
 		.WriteData(WriteData),
@@ -25,7 +25,7 @@ module top (
 	);
 	imem imem(
 		.a(PC),
-		.rd(Instr)
+		.rd(InstrF)
 	);
 	dmem dmem(
 		.clk(clk),
