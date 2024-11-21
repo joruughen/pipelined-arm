@@ -10,12 +10,13 @@ module controller (
 	ALUControlD,
 	MemWriteD,
 	MemtoRegD,
-	PCSrcD
+	PCSrcD, 
+	ExtImmE
 );
 	input wire clk;
 	input wire reset;
 	//señales para decode stage
-	input wire [31:12] InstrD;
+	input wire [31:0] InstrD;
 	
 	output wire [1:0] RegSrcD;
 	output wire RegWriteD;
@@ -25,12 +26,14 @@ module controller (
 	output wire MemWriteD;
 	output wire MemtoRegD;
 	output wire PCSrcD;
+    output wire [31:0] ExtImmE;
+
 	wire [3:0] CondD;
 	
 
 	
 	//Para el puente entre Decoder y Conditional Logic
-	wire FlagWD;
+	wire [1:0] FlagWD;
 	wire PCS;
 	wire RegW;
 	wire MemW;
@@ -50,7 +53,6 @@ assign PCSrcD = 1'b0;
 	wire MemWriteD;
 	wire MemtoRegD;
 	wire PCSrcD;
-	wire [3:0] Flags;
 	 
 */	
 	//Decode Stage
@@ -70,22 +72,33 @@ assign PCSrcD = 1'b0;
 		.ALUControl(ALUControlD)
 	);
 	
-/*
+    wire FlagWriteD;
+    assign FlagWriteD = FlagW;
+    wire PCSrcE;
+    wire RegWriteE;
+    wire MemToRegE;
+    wire MemWriteE;
+    wire BranchE;
+    wire ALUSrcE;
+    wire FlagWriteE;
+    wire [3:0] FlagsE;
+    wire[31:0] RD1E, RD2E;
+    wire [3:0] WA3E;
+    wire [1:0] ALUControlE;
+    
 	flopr D_to_E(
 	   .clk(clk), 
 	   .reset(reset),
-	   .d({PCSrcD, RegWriteD, MemToRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD, ImmSrcD, CondD, Flags}),
-	   .q({})
-	   
-	)
-*/
+	   .d({PCSrcD, RegWriteD, MemToRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD, CondD, Flags, RD1D, RD2D, ExtImm}),
+	   .q({PCSrcE, RegWriteE, MemToRegE, MemWriteE, ALUControlE, BranchE, ALUSrcE, FlagWriteE, WA3E, FlagsE, RD1E, RD2E, ExtImmE})
+	);
 	
 	condlogic cl(
 		.clk(clk),
 		.reset(reset),
 		.Cond(InstrD[31:28]),
 		.ALUFlags(ALUFlags),
-		.FlagW(FlagWD),
+		.FlagW(FlagW),
 		.PCS(PCSD),
 		.RegW(RegWD),
 		.MemW(MemWD),
