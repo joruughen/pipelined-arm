@@ -1,8 +1,22 @@
-// Example: Test ARM processor
-
-e04f000f
+//setear en 0 registros del 0 al 10
 e04f100f
 e04f200f
 e04f300f
-e280100a
-e280200a
+e04f400f
+e04f500f
+e04f600f
+e04f700f
+e04f800f
+e04f900f
+e04fa00f
+e04fa00f
+// Probar Forwarding
+e0841005
+e0018003
+e0018003
+e0018003
+e1869001
+e041a007
+
+
+//

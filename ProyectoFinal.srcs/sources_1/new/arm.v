@@ -17,7 +17,8 @@ module arm (
 	output wire [31:0] WriteData;
 	input wire [31:0] ReadData;
 	wire [3:0] ALUFlags;
-	wire RegWrite;
+	wire RegWriteW;//RegWriteW
+	wire RegWriteM;//RegWriteM
 	wire ALUSrc;
 	wire MemtoReg;
 	wire PCSrc;
@@ -30,13 +31,20 @@ module arm (
 	
 	wire BranchTakenE;
 	
+	//Para Hazard Forwarding
+	wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
+    wire [1:0] ForwardAE, ForwardBE;
+		
+		//
+	
 	controller c(
 		.clk(clk),
 		.reset(reset),
 		.InstrD(InstrF),
 		.ALUFlags(ALUFlags),
 		.RegSrcD(RegSrc),
-		.RegWriteW(RegWrite),
+		.RegWriteW(RegWriteW),
+		.RegWriteM(RegWriteM),
 		.ImmSrcD(ImmSrc),
 		.ALUSrcE(ALUSrc),//
 		.ALUControlE(ALUControl),
@@ -50,7 +58,7 @@ module arm (
 		.clk(clk),
 		.reset(reset),
 		.RegSrcD(RegSrc),
-		.RegWriteW(RegWrite),
+		.RegWriteW(RegWriteW),
 		.ImmSrcD(ImmSrc),
 		.ALUSrcE(ALUSrc),
 		.ALUControlE(ALUControl),
@@ -66,6 +74,37 @@ module arm (
 		//.CondD(CondD),
 		.RD1D(RD1D), 
 		.RD2D(RD2D),
-		.BranchTakenE(BranchTakenE)
+		.BranchTakenE(BranchTakenE),
+		//Para Hazard Forwarding
+		.Match_1E_M(Match_1E_M), 
+        .Match_1E_W(Match_1E_W), 
+        .Match_2E_M(Match_2E_M), 
+        .Match_2E_W(Match_2E_W),
+        .ForwardAE(ForwardAE), 
+        .ForwardBE(ForwardBE)
+		
+		//
 	);
+	
+	hazard h(
+        .clk(clk), 
+        .reset(reset), 
+        .Match_1E_M(Match_1E_M), 
+        .Match_1E_W(Match_1E_W), 
+        .Match_2E_M(Match_2E_M), 
+        .Match_2E_W(Match_2E_W),
+        //.Match_12D_E(Match_12D_E),
+        .RegWriteM(RegWriteM), 
+        .RegWriteW(RegWriteW), 
+        //.BranchTakenE(BranchTakenE), 
+        //.MemtoRegE(MemtoRegE),
+        //.PCWrPendingF(PCWrPendingF), 
+        //.PCSrcW(PCSrcW),
+        .ForwardAE(ForwardAE), 
+        .ForwardBE(ForwardBE)
+        //.StallF(StallF), 
+        //.StallD(StallD), 
+        //.FlushD(FlushD), 
+        //.FlushE(FlushE)
+        );
 endmodule

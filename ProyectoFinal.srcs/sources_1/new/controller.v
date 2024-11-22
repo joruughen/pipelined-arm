@@ -5,6 +5,7 @@ module controller (
 	ALUFlags,
 	RegSrcD,
 	RegWriteW,
+	RegWriteM,
 	ImmSrcD,
 	ALUSrcE,
 	ALUControlE,
@@ -19,7 +20,7 @@ module controller (
 	input wire [31:0] InstrD;
 	
 	output wire [1:0] RegSrcD;
-	output wire RegWriteW;
+	output wire RegWriteW, RegWriteM;
 	output wire [1:0] ImmSrcD;
 	output wire ALUSrcE;
 	output wire [1:0] ALUControlE;
@@ -32,8 +33,7 @@ module controller (
     wire PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
     wire [1:0] ALUControlD;
 
-	wire [3:0] CondD;
-	assign CondD = InstrD[31:28];
+	
 
 	
 	//Para el puente entre Decoder y Conditional Logic
@@ -74,6 +74,7 @@ module controller (
     wire ALUSrcE;
     wire [1:0] FlagWriteE;
     wire [3:0] CondE;
+    assign CondE = InstrD[31:28];
     wire [3:0] FlagsE;
     wire [3:0] FlagsPrima;
     wire [1:0] ALUControlE;
@@ -85,8 +86,8 @@ module controller (
     flopr #(14) DToEreg(
         .clk(clk), 
         .reset(reset), 
-        .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD, CondD}), 
-        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE, CondE}));
+        .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD}), 
+        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE}));
     
     flopr #(4) FlagEreg(
         .clk(clk), 
@@ -113,7 +114,7 @@ module controller (
 		.FlagsPrima(FlagsPrima)
 	);
 	
-	wire PCSrcM, RegWriteM, MemtoRegM, MemWriteM;
+	wire PCSrcM, MemtoRegM, MemWriteM; // RegWriteM definido arriba como output wire
 	
 	//para memory stage
 	flopr #(4) EtoMreg(

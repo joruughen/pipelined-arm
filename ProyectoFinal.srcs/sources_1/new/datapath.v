@@ -18,8 +18,45 @@ module datapath (
 	//CondD, // bits 15:12 de InstrD
 	RD1D, // ReadData1 de register file
 	RD2D, // ReadData2 de register file
-	BranchTakenE
+	BranchTakenE,
+	
+	//Para Hazard Forwarding
+    Match_1E_M, 
+    Match_1E_W, 
+    Match_2E_M,
+    Match_2E_W,
+    ForwardAE,
+    ForwardBE
+		
+	//
 );
+
+    //Hazard perdon por el desorden
+    
+    output wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
+    input wire [1:0] ForwardAE, ForwardBE;
+    
+    //
+    //Execute signals
+    wire [31:0] RD1E;
+	wire [31:0] RD2E;
+	wire [31:0] ExtImmE;
+	wire [3:0] WA3E;
+	wire [3:0] RA1E;
+	wire [3:0] RA2E;
+	
+   // wire [3:0] ALUOutM;
+	wire [31:0] SrcAE;
+	wire [31:0] SrcBE;
+    //
+    //Memory signals
+    wire [31:0] ALUOutM, WriteDataM;
+	wire [3:0] WA3M;
+	//
+	//WriteBack Signals
+	wire [31:0] ReadDataW;
+    wire [31:0] ALUOutW;
+    //
 
 	input wire clk;
 	input wire reset;
@@ -149,12 +186,7 @@ module datapath (
 		.ExtImm(ExtImmD)
 	);
 	
-	wire [31:0] RD1E;
-	wire [31:0] RD2E;
-	wire [31:0] ExtImmE;
-	wire [3:0] WA3E;
-	wire [3:0] RA1E;
-	wire [3:0] RA2E;
+	
 	
 	//Flops Execute
 	
@@ -176,12 +208,15 @@ module datapath (
         .d(ExtImmD), 
         .q(ExtImmE)
     );
-    flopr #(4) wa3ereg(
+    /*flopr #(4) wa3ereg(
         .clk(clk), 
         .reset(reset), 
         .d(InstrD[15:12]), 
         .q(WA3E)
     );
+    */
+    assign WA3E = InstrD[15:12];//cambio
+    
     flopr #(4) ra1reg(
         .clk(clk), 
         .reset(reset), 
@@ -196,13 +231,9 @@ module datapath (
     );
 	
 	
-	wire [3:0] ALUOutM;
-	wire [31:0] SrcAE;
-	wire [31:0] SrcBE;
+
 	
-	wire [1:0] ForwardAE, ForwardBE;
-	assign ForwardAE = 2'b00;
-	assign ForwardBE = 2'b00; //cambiar temporal
+    
 	
 	mux3 #(32) MSrcAE(
 		.d0(RD1E),
@@ -238,8 +269,7 @@ module datapath (
 	
     //	Memory Stage
     
-    wire [31:0] ALUOutM, WriteDataM;
-	wire [3:0] WA3M;
+   
 	
     //Flops Memory
 	
@@ -247,8 +277,7 @@ module datapath (
     flopr #(32) wdreg(.clk(clk), .reset(reset), .d(WriteDataE), .q(WriteDataM));
     flopr #(4) wa3mreg(.clk(clk), .reset(reset), .d(WA3E), .q(WA3M));
     
-    wire [31:0] ReadDataW;
-    wire [31:0] ALUOutW;
+
     
     
 	
@@ -262,6 +291,15 @@ module datapath (
     mux2 #(32) resmux(.d0(ALUOutW), .d1(ReadDataW), .s(MemtoRegW), .y(ResultW));	
     
     
+    //Hazard Forwarding Devolviendo señales
+	
+	assign Match_1E_M = (RA1E == WA3M);
+    assign Match_1E_W = (RA1E == WA3W);
+    assign Match_2E_M = (RA2E == WA3M);
+    assign Match_2E_W = (RA2E == WA3W);
+	
+	//
+
 	
 
 endmodule
