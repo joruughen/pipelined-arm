@@ -19,7 +19,7 @@ module regfile (
 	output wire [31:0] rd1;
 	output wire [31:0] rd2;
 	reg [31:0] rf [14:0];
-	always @(posedge clk)
+	always @(negedge clk)
 		if (we3)
 			rf[wa3] <= wd3;
 	assign rd1 = (ra1 == 4'b1111 ? r15 : rf[ra1]);

@@ -25,9 +25,10 @@ module arm (
 	wire [1:0] ImmSrc;
 	wire [1:0] ALUControl;
 	wire [31:0] ExtImm;
-	wire [3:0] CondD;
 	wire [31:0] RD1D;
 	wire [31:0] RD2D;
+	
+	wire BranchTakenE;
 	
 	controller c(
 		.clk(clk),
@@ -35,34 +36,36 @@ module arm (
 		.InstrD(InstrF),
 		.ALUFlags(ALUFlags),
 		.RegSrcD(RegSrc),
-		.RegWriteD(RegWrite),
+		.RegWriteW(RegWrite),
 		.ImmSrcD(ImmSrc),
-		.ALUSrcD(ALUSrc),
-		.ALUControlD(ALUControl),
-		.MemWriteD(MemWrite),
-		.MemtoRegD(MemtoReg),
-		.PCSrcD(PCSrc),
-		.ExtImmE(ExtImm)
+		.ALUSrcE(ALUSrc),//
+		.ALUControlE(ALUControl),
+		.MemWriteM(MemWrite),//
+		.MemtoRegW(MemtoReg),
+		.PCSrcW(PCSrc),
+		//.ExtImmE(ExtImm),
+		.BranchTakenE(BranchTakenE)
 	);
 	datapath dp(
 		.clk(clk),
 		.reset(reset),
 		.RegSrcD(RegSrc),
-		.RegWrite(RegWrite),
+		.RegWriteW(RegWrite),
 		.ImmSrcD(ImmSrc),
-		.ALUSrc(ALUSrc),
-		.ALUControl(ALUControl),
-		.MemtoReg(MemtoReg),
-		.PCSrc(PCSrc),
+		.ALUSrcE(ALUSrc),
+		.ALUControlE(ALUControl),
+		.MemtoRegW(MemtoReg),
+		.PCSrcW(PCSrc),
 		.ALUFlags(ALUFlags),
 		.PCF(PC),
 		.InstrF(InstrF),
-		.ALUResult(ALUResult),
-		.WriteData(WriteData),
-		.ReadData(ReadData),
-		.ExtImm(ExtImm), 
-		.CondD(CondD),
+		.ALUOutM(ALUResult),
+		.WriteDataE(WriteData),
+		.ReadDataM(ReadData),
+		.ExtImmD(ExtImm), 
+		//.CondD(CondD),
 		.RD1D(RD1D), 
-		.RD2D(RD2D)
+		.RD2D(RD2D),
+		.BranchTakenE(BranchTakenE)
 	);
 endmodule

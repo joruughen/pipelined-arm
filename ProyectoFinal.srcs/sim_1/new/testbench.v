@@ -12,15 +12,14 @@ module testbench;
 		.MemWrite(MemWrite)
 	);
 	
-	reg StallF,BranchE;
+	
  
  
  
  
 	
 	initial begin
-	    StallF <= 0;
-	    BranchE <= 0;
+	    
 	    
 		reset <= 1;
 		#(22)

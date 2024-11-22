@@ -4,14 +4,14 @@ module controller (
 	InstrD,
 	ALUFlags,
 	RegSrcD,
-	RegWriteD,
+	RegWriteW,
 	ImmSrcD,
-	ALUSrcD,
-	ALUControlD,
-	MemWriteD,
-	MemtoRegD,
-	PCSrcD, 
-	ExtImmE
+	ALUSrcE,
+	ALUControlE,
+	MemWriteM,
+	MemtoRegW,
+	PCSrcW, 
+	BranchTakenE
 );
 	input wire clk;
 	input wire reset;
@@ -19,91 +19,118 @@ module controller (
 	input wire [31:0] InstrD;
 	
 	output wire [1:0] RegSrcD;
-	output wire RegWriteD;
+	output wire RegWriteW;
 	output wire [1:0] ImmSrcD;
-	output wire ALUSrcD;
-	output wire [1:0] ALUControlD;
-	output wire MemWriteD;
-	output wire MemtoRegD;
-	output wire PCSrcD;
-    output wire [31:0] ExtImmE;
+	output wire ALUSrcE;
+	output wire [1:0] ALUControlE;
+	output wire MemWriteM;
+	output wire MemtoRegW;
+	output wire PCSrcW;
+
+    //wires de decode
+    
+    wire PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
+    wire [1:0] ALUControlD;
 
 	wire [3:0] CondD;
-	
+	assign CondD = InstrD[31:28];
 
 	
 	//Para el puente entre Decoder y Conditional Logic
-	wire [1:0] FlagWD;
-	wire PCS;
-	wire RegW;
-	wire MemW;
+	wire [1:0] FlagWriteD;
+	
+	//Para execute
+	output wire BranchTakenE;
 	
 	
-		input wire [3:0] ALUFlags;
-assign PCSrcD = 1'b0;
-/*	
-	//señales para execute stage
-	wire [31:12] InstrE;
-	// wire [3:0] ALUFlags;
-	wire [1:0] RegSrcE;
-	wire RegWriteE;
-	// wire [1:0] ImmSrcD;
-	wire ALUSrcD;
-	wire [1:0] ALUControlD;
-	wire MemWriteD;
-	wire MemtoRegD;
-	wire PCSrcD;
-	 
-*/	
-	//Decode Stage
-//	assign CondD = InstrD[31:28];
+	input wire [3:0] ALUFlags;
+
 	decode dec(
 		.Op(InstrD[27:26]),
 		.Funct(InstrD[25:20]),
 		.Rd(InstrD[15:12]),
-		.FlagW(FlagWD),
-		.PCS(PCSD),
-		.RegW(RegWD),
-		.MemW(MemWD),
+		.FlagW(FlagWriteD),
+		.PCS(PCSrcD),
+		.RegW(RegWriteD),
+		.MemW(MemWriteD),
 		.MemtoReg(MemtoRegD),
 		.ALUSrc(ALUSrcD),
 		.ImmSrc(ImmSrcD),
 		.RegSrc(RegSrcD),
-		.ALUControl(ALUControlD)
+		.ALUControl(ALUControlD),
+		.Branch(BranchD)
 	);
 	
-    wire FlagWriteD;
-    assign FlagWriteD = FlagW;
+	
+	
     wire PCSrcE;
+    wire PCSrcEpostCondLogic;
     wire RegWriteE;
-    wire MemToRegE;
+    wire RegWriteEpostCondLogic;
+    wire MemtoRegE;
     wire MemWriteE;
+    wire MemWriteEpostCondLogic;
     wire BranchE;
     wire ALUSrcE;
-    wire FlagWriteE;
+    wire [1:0] FlagWriteE;
+    wire [3:0] CondE;
     wire [3:0] FlagsE;
-    wire[31:0] RD1E, RD2E;
-    wire [3:0] WA3E;
+    wire [3:0] FlagsPrima;
     wire [1:0] ALUControlE;
     
-	flopr D_to_E(
-	   .clk(clk), 
-	   .reset(reset),
-	   .d({PCSrcD, RegWriteD, MemToRegD, MemWriteD, ALUControlD, BranchD, ALUSrcD, FlagWriteD, CondD, Flags, RD1D, RD2D, ExtImm}),
-	   .q({PCSrcE, RegWriteE, MemToRegE, MemWriteE, ALUControlE, BranchE, ALUSrcE, FlagWriteE, WA3E, FlagsE, RD1E, RD2E, ExtImmE})
-	);
-	
+
+    
+    
+    
+    flopr #(14) DToEreg(
+        .clk(clk), 
+        .reset(reset), 
+        .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD, CondD}), 
+        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE, CondE}));
+    
+    flopr #(4) FlagEreg(
+        .clk(clk), 
+        .reset(reset), 
+        .d(FlagsPrima), 
+        .q(FlagsE));
+  
+ 
 	condlogic cl(
 		.clk(clk),
 		.reset(reset),
-		.Cond(InstrD[31:28]),
+		.Cond(CondE),
 		.ALUFlags(ALUFlags),
-		.FlagW(FlagW),
-		.PCS(PCSD),
-		.RegW(RegWD),
-		.MemW(MemWD),
-		.PCSrc(PCSrcD),
-		.RegWrite(RegWriteD),
-		.MemWrite(MemWriteD)
+		.FlagW(FlagWriteE),
+		.PCS(PCSrcE),
+		.RegW(RegWriteE),
+		.MemW(MemWriteE),
+		.PCSrc(PCSrcEpostCondLogic),
+		.RegWrite(RegWriteEpostCondLogic),
+		.MemWrite(MemWriteEpostCondLogic),
+		.Branch(BranchE),
+		.BranchTakenE(BranchTakenE),
+		.FlagsE(FlagsE),
+		.FlagsPrima(FlagsPrima)
 	);
+	
+	wire PCSrcM, RegWriteM, MemtoRegM, MemWriteM;
+	
+	//para memory stage
+	flopr #(4) EtoMreg(
+        .clk(clk), 
+        .reset(reset), 
+        .d({PCSrcEpostCondLogic, RegWriteEpostCondLogic, MemtoRegE, MemWriteEpostCondLogic}), 
+        .q({PCSrcM, RegWriteM, MemtoRegM, MemWriteM}));
+        
+    //para write back
+    flopr #(4) MtoWreg(
+        .clk(clk), 
+        .reset(reset), 
+        .d({PCSrcM, RegWriteM, MemtoRegM }), 
+        .q({PCSrcW, RegWriteW, MemtoRegW}));
+     
+	
+	
+	
+	
 endmodule
