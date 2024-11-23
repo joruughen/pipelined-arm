@@ -34,7 +34,7 @@ module arm (
 	//Para Hazard Forwarding
 	wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
     wire [1:0] ForwardAE, ForwardBE;
-		
+    wire Match_12D_E, FlushE, StallF, StallD;
 		//
 	
 	controller c(
@@ -52,7 +52,8 @@ module arm (
 		.MemtoRegW(MemtoReg),
 		.PCSrcW(PCSrc),
 		//.ExtImmE(ExtImm),
-		.BranchTakenE(BranchTakenE)
+		.BranchTakenE(BranchTakenE),
+		.MemtoRegE(MemtoRegE)
 	);
 	datapath dp(
 		.clk(clk),
@@ -80,9 +81,12 @@ module arm (
         .Match_1E_W(Match_1E_W), 
         .Match_2E_M(Match_2E_M), 
         .Match_2E_W(Match_2E_W),
+        .Match_12D_E(Match_12D_E),
         .ForwardAE(ForwardAE), 
-        .ForwardBE(ForwardBE)
-		
+        .ForwardBE(ForwardBE),
+		.StallF(StallF),
+		.StallD(StallD),
+		.FlushE(FlushE)
 		//
 	);
 	
@@ -93,18 +97,18 @@ module arm (
         .Match_1E_W(Match_1E_W), 
         .Match_2E_M(Match_2E_M), 
         .Match_2E_W(Match_2E_W),
-        //.Match_12D_E(Match_12D_E),
+        .Match_12D_E(Match_12D_E),
         .RegWriteM(RegWriteM), 
         .RegWriteW(RegWriteW), 
         //.BranchTakenE(BranchTakenE), 
-        //.MemtoRegE(MemtoRegE),
+        .MemtoRegE(MemtoRegE),
         //.PCWrPendingF(PCWrPendingF), 
         //.PCSrcW(PCSrcW),
         .ForwardAE(ForwardAE), 
-        .ForwardBE(ForwardBE)
-        //.StallF(StallF), 
-        //.StallD(StallD), 
-        //.FlushD(FlushD), 
-        //.FlushE(FlushE)
+        .ForwardBE(ForwardBE),
+        .StallF(StallF), 
+        .StallD(StallD), 
+        // FlushD(FlushD), 
+        .FlushE(FlushE)
         );
 endmodule

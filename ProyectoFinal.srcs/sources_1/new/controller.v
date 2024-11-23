@@ -11,6 +11,7 @@ module controller (
 	ALUControlE,
 	MemWriteM,
 	MemtoRegW,
+	MemtoRegE,
 	PCSrcW, 
 	BranchTakenE
 );
@@ -67,7 +68,7 @@ module controller (
     wire PCSrcEpostCondLogic;
     wire RegWriteE;
     wire RegWriteEpostCondLogic;
-    wire MemtoRegE;
+    output wire MemtoRegE;
     wire MemWriteE;
     wire MemWriteEpostCondLogic;
     wire BranchE;

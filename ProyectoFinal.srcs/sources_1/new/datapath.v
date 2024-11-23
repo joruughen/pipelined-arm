@@ -19,6 +19,7 @@ module datapath (
 	RD1D, // ReadData1 de register file
 	RD2D, // ReadData2 de register file
 	BranchTakenE,
+	MemtoRegE,
 	
 	//Para Hazard Forwarding
     Match_1E_M, 
@@ -26,15 +27,21 @@ module datapath (
     Match_2E_M,
     Match_2E_W,
     ForwardAE,
-    ForwardBE
+    ForwardBE,
+    Match_12D_E,
+    StallF,
+    StallD,
+    FlushE
 		
 	//
 );
 
     //Hazard perdon por el desorden
     
-    output wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
+    output wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W, Match_12D_E;
+        
     input wire [1:0] ForwardAE, ForwardBE;
+    input wire MemtoRegE, StallF, StallD, FlushE;
     
     //
     //Execute signals
@@ -112,8 +119,8 @@ module datapath (
 		.s(BranchTakenE),
 		.y(PC)
 	);
-	wire StallF;
-	assign StallF = 0;// cambiar tempora
+	// wire StallF;
+	// assign StallF = 0;// cambiar tempora
 	flopenr #(32) pcreg(
 		.clk(clk),
 		.reset(reset),
@@ -297,6 +304,8 @@ module datapath (
     assign Match_1E_W = (RA1E == WA3W);
     assign Match_2E_M = (RA2E == WA3M);
     assign Match_2E_W = (RA2E == WA3W);
+	
+	assign Match_12D_E = (RA1D == WA3E) | (RA2D == WA3E);
 	
 	//
 
