@@ -186,3 +186,7 @@ relaunch_sim
 current_wave_config {Untitled 14}
 add_wave {{/testbench/dut/arm/InstrF}} 
 relaunch_sim
+close_sim
+launch_simulation
+launch_simulation
+source testbench.tcl

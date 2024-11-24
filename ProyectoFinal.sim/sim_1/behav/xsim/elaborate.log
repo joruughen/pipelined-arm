@@ -5,11 +5,40 @@ Running: /tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:90]
-WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:91]
-WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:131]
-WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:132]
+WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:92]
+WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:93]
+WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:133]
+WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:134]
 WARNING: [VRFC 10-9543] actual bit length 2 differs from formal bit length 3 for port 'ALUControl' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:272]
-WARNING: [VRFC 10-5021] port 'MemtoRegE' is not connected on this instance [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/arm.v:58]
+WARNING: [VRFC 10-5021] port 'MemtoRegE' is not connected on this instance [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/arm.v:61]
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.decode
+Compiling module xil_defaultlib.flopr(WIDTH=14)
+Compiling module xil_defaultlib.flopr(WIDTH=4)
+Compiling module xil_defaultlib.flopenr(WIDTH=2)
+Compiling module xil_defaultlib.condcheck
+Compiling module xil_defaultlib.condlogic
+Compiling module xil_defaultlib.controller
+Compiling module xil_defaultlib.mux2(WIDTH=32)
+Compiling module xil_defaultlib.flopenr(WIDTH=32)
+Compiling module xil_defaultlib.adder(WIDTH=32)
+Compiling module xil_defaultlib.flopr(WIDTH=32)
+Compiling module xil_defaultlib.mux2(WIDTH=4)
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.extend
+Compiling module xil_defaultlib.mux3(WIDTH=32)
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.datapath
+Compiling module xil_defaultlib.hazard
+Compiling module xil_defaultlib.arm
+Compiling module xil_defaultlib.imem
+Compiling module xil_defaultlib.dmem
+Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.testbench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot testbench_behav

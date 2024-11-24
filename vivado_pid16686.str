@@ -10948,3 +10948,321 @@ selectGraphicalView(RDIResource.RDIViews_WAVEFORM_VIEWER, 525, 333); // b (RDIRe
 // TclEventType: WAVEFORM_UPDATE_WAVEFORM
 // TclEventType: WAVEFORM_UPDATE_COMMANDS
 // TclEventType: WAVEFORM_MOVE_CURSOR
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Elapsed time: 1195 seconds
+selectButton("OptionPane.button", "Cancel", "Save Waveform Configuration"); // JButton (OptionPane.button)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "memfile_example.mem", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "datapath.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "hazard.v", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+// Elapsed time: 238 seconds
+unMinimizeFrame(PAResourceOtoP.PAViews_SOURCES, "Sources"); // R (PAResourceOtoP.PAViews_SOURCES, Sources)
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v)]", 3, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v)]", 3, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+// Elapsed time: 55 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v), cl : condlogic (condlogic.v)]", 7, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v), cl : condlogic (condlogic.v)]", 7, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectCodeEditor("condlogic.v", 308, 684); // ac (condlogic.v)
+// Elapsed time: 124 seconds
+selectCodeEditor("condlogic.v", 474, 373); // ac (condlogic.v)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), dp : datapath (datapath.v)]", 13, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), dp : datapath (datapath.v), pcreg : flopenr (flopenr.v)]", 16, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), dp : datapath (datapath.v)]", 13); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), h : hazard (hazard.v)]", 14, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), h : hazard (hazard.v)]", 14, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // J (PAResourceOtoP.PAViews_CODE, PlanAheadTabCode)
+// Elapsed time: 116 seconds
+selectCodeEditor("hazard.v", 104, 232); // ac (hazard.v)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,394 MB. GUI used memory: 140 MB. Current time: 11/23/24, 7:14:18 PM PET
+// Elapsed time: 50 seconds
+selectCodeEditor("hazard.v", 139, 303); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'c'); // ac (hazard.v)
+selectCodeEditor("hazard.v", 282, 408); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+// Elapsed time: 19 seconds
+selectCodeEditor("hazard.v", 137, 425); // ac (hazard.v)
+selectCodeEditor("hazard.v", 360, 460); // ac (hazard.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 03h:53m:30s
+// Elapsed Time for: 'L.f': 03h:53m:32s
+// Elapsed time: 40 seconds
+selectCodeEditor("hazard.v", 203, 307); // ac (hazard.v)
+selectCodeEditor("hazard.v", 331, 328); // ac (hazard.v)
+selectCodeEditor("hazard.v", 331, 329); // ac (hazard.v)
+selectCodeEditor("hazard.v", 329, 344); // ac (hazard.v)
+selectCodeEditor("hazard.v", 333, 362); // ac (hazard.v)
+selectCodeEditor("hazard.v", 338, 381); // ac (hazard.v)
+selectCodeEditor("hazard.v", 334, 390); // ac (hazard.v)
+selectCodeEditor("hazard.v", 311, 355); // ac (hazard.v)
+// Elapsed time: 1575 seconds
+selectCodeEditor("hazard.v", 85, 360); // ac (hazard.v)
+selectCodeEditor("hazard.v", 85, 354); // ac (hazard.v)
+selectCodeEditor("hazard.v", 178, 349); // ac (hazard.v)
+selectCodeEditor("hazard.v", 178, 349, false, false, false, false, true); // ac (hazard.v) - Double Click
+// Elapsed time: 13 seconds
+selectCodeEditor("hazard.v", 132, 355); // ac (hazard.v)
+selectCodeEditor("hazard.v", 132, 355, false, false, false, false, true); // ac (hazard.v) - Double Click
+selectCodeEditor("hazard.v", 132, 355); // ac (hazard.v)
+selectCodeEditor("hazard.v", 163, 416); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+typeControlKey(null, null, 'z');
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+selectCodeEditor("hazard.v", 192, 607); // ac (hazard.v)
+// Elapsed time: 26 seconds
+typeControlKey((HResource) null, "hazard.v", 'c'); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+// Elapsed time: 45 seconds
+selectCodeEditor("hazard.v", 198, 656); // ac (hazard.v)
+selectCodeEditor("hazard.v", 49, 338); // ac (hazard.v)
+selectCodeEditor("hazard.v", 243, 343); // ac (hazard.v)
+selectCodeEditor("hazard.v", 243, 343, false, false, false, false, true); // ac (hazard.v) - Double Click
+selectCodeEditor("hazard.v", 322, 326); // ac (hazard.v)
+selectCodeEditor("hazard.v", 117, 196); // ac (hazard.v)
+selectCodeEditor("hazard.v", 97, 190); // ac (hazard.v)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,410 MB. GUI used memory: 140 MB. Current time: 11/23/24, 7:44:18 PM PET
+selectCodeEditor("hazard.v", 223, 447); // ac (hazard.v)
+selectCodeEditor("hazard.v", 140, 637); // ac (hazard.v)
+selectCodeEditor("hazard.v", 140, 637, false, false, false, false, true); // ac (hazard.v) - Double Click
+typeControlKey((HResource) null, "hazard.v", 'c'); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'c'); // ac (hazard.v)
+selectCodeEditor("hazard.v", 193, 670); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'v'); // ac (hazard.v)
+// Elapsed time: 11 seconds
+selectCodeEditor("hazard.v", 194, 685); // ac (hazard.v)
+selectCodeEditor("hazard.v", 246, 709); // ac (hazard.v)
+selectCodeEditor("hazard.v", 207, 693); // ac (hazard.v)
+selectCodeEditor("hazard.v", 232, 401); // ac (hazard.v)
+selectCodeEditor("hazard.v", 90, 97); // ac (hazard.v)
+selectCodeEditor("hazard.v", 20, 727); // ac (hazard.v)
+selectCodeEditor("hazard.v", 290, 702); // ac (hazard.v)
+// Elapsed time: 49 seconds
+selectCodeEditor("hazard.v", 341, 624); // ac (hazard.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 04h:24m:38s
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "arm.v", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+// Elapsed Time for: 'L.f': 04h:24m:40s
+selectCodeEditor("arm.v", 73, 575); // ac (arm.v)
+selectCodeEditor("arm.v", 75, 621); // ac (arm.v)
+selectCodeEditor("arm.v", 181, 607); // ac (arm.v)
+selectCodeEditor("arm.v", 181, 607, false, false, false, false, true); // ac (arm.v) - Double Click
+selectCodeEditor("arm.v", 181, 607); // ac (arm.v)
+selectCodeEditor("arm.v", 74, 681); // ac (arm.v)
+selectCodeEditor("arm.v", 184, 609); // ac (arm.v)
+typeControlKey((HResource) null, "arm.v", 'c'); // ac (arm.v)
+selectCodeEditor("arm.v", 179, 615); // ac (arm.v)
+selectCodeEditor("arm.v", 177, 607); // ac (arm.v)
+typeControlKey((HResource) null, "arm.v", 'v'); // ac (arm.v)
+selectCodeEditor("arm.v", 105, 623); // ac (arm.v)
+selectCodeEditor("arm.v", 151, 620); // ac (arm.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "hazard.v", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "arm.v", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+typeControlKey((HResource) null, "arm.v", 'v'); // ac (arm.v)
+typeControlKey((HResource) null, "arm.v", 'v'); // ac (arm.v)
+selectCodeEditor("arm.v", 363, 448); // ac (arm.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 04h:25m:36s
+// Elapsed Time for: 'L.f': 04h:25m:38s
+selectCodeEditor("arm.v", 174, 273); // ac (arm.v)
+// Elapsed time: 15 seconds
+selectCodeEditor("arm.v", 60, 593); // ac (arm.v)
+typeControlKey((HResource) null, "arm.v", 'c'); // ac (arm.v)
+selectCodeEditor("arm.v", 87, 334); // ac (arm.v)
+typeControlKey((HResource) null, "arm.v", 'v'); // ac (arm.v)
+selectCodeEditor("arm.v", 193, 368); // ac (arm.v)
+selectCodeEditor("arm.v", 238, 355); // ac (arm.v)
+selectCodeEditor("arm.v", 241, 308); // ac (arm.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 04h:26m:06s
+// Elapsed Time for: 'L.f': 04h:26m:08s
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ap (PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, simulation_run_behavioral_menu)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+selectButton("OptionPane.button", "Yes", "Simulation is Already Running"); // JButton (OptionPane.button)
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_CLOSE_WCFG
+selectButton("OptionPane.button", "Discard", "Save Waveform Configuration"); // JButton (OptionPane.button)
+// TclEventType: SIMULATION_CLOSE_SIMULATION
+// Tcl Message: close_sim 
+// Tcl Message: INFO: [Simtcl 6-16] Simulation closed 
+dismissDialog("Close"); // bj (Close Progress)
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Tcl Message: Command: launch_simulation  
+// Tcl Message: xvlog --incr --relax -prj testbench_vlog.prj 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '2' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim' 
+// Tcl Message: xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot testbench_behav xil_defaultlib.testbench xil_defaultlib.glbl -log elaborate.log 
+// TclEventType: LAUNCH_SIM
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds INFO: [USF-XSim-99] Step results log file:'/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim/elaborate.log' 
+// Tcl Message: ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim/elaborate.log' file for more information. ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation. 
+// Tcl Message: ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors. 
+// CommandFailedException: ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.  
+// HOptionPane Error: 'ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.  (Run Simulation)'
+// 'd' command handler elapsed time: 7 seconds
+selectButton("OptionPane.button", "OK", "Run Simulation"); // JButton (OptionPane.button)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK", "Critical Messages"); // f (PAResourceAtoD.CmdMsgDialog_OK)
+dismissDialog("Critical Messages"); // a (dialog1)
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v)]", 3, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, top (top.v), arm : arm (arm.v), c : controller (controller.v)]", 3, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectCodeEditor("controller.v", 168, 171); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'c'); // ac (controller.v)
+selectCodeEditor("controller.v", 158, 173); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'c'); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'v'); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'v'); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'v'); // ac (controller.v)
+selectCodeEditor("controller.v", 179, 217); // ac (controller.v)
+// Elapsed time: 22 seconds
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "PCSrc"); // d.c (RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX)
+selectCodeEditor("controller.v", 119, 262); // ac (controller.v)
+// Elapsed time: 13 seconds
+selectCodeEditor("controller.v", 119, 305); // ac (controller.v)
+selectCodeEditor("controller.v", 98, 473); // ac (controller.v)
+selectCodeEditor("controller.v", 98, 473, false, false, false, false, true); // ac (controller.v) - Double Click
+selectCodeEditor("controller.v", 98, 473); // ac (controller.v)
+// Elapsed time: 35 seconds
+setText(RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX, "PCS"); // d.c (RDIResource.HCodeEditor_SEARCH_TEXT_COMBO_BOX)
+selectCodeEditor("controller.v", 243, 246); // ac (controller.v)
+selectCodeEditor("controller.v", 162, 250); // ac (controller.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "hazard.v", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("hazard.v", 27, 99); // ac (hazard.v)
+typeControlKey((HResource) null, "hazard.v", 'c'); // ac (hazard.v)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "controller.v", 5); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("controller.v", 111, 226); // ac (controller.v)
+typeControlKey((HResource) null, "controller.v", 'v'); // ac (controller.v)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 04h:28m:42s
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Elapsed Time for: 'L.f': 04h:28m:44s
+// Elapsed Time for: 'L.f': 04h:28m:46s
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ap (PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, simulation_run_behavioral_menu)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// TclEventType: LAUNCH_SIM
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: launch_simulation 
+// Tcl Message: Command: launch_simulation  
+// Tcl Message: xvlog --incr --relax -prj testbench_vlog.prj 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '2' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim' 
+// Tcl Message: xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot testbench_behav xil_defaultlib.testbench xil_defaultlib.glbl -log elaborate.log 
+// TclEventType: LAUNCH_SIM
+// Tcl Message: Built simulation snapshot testbench_behav 
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/melanie/Git/pipelined-arm/ProyectoFinal.sim/sim_1/behav/xsim' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// Tcl Message: Time resolution is 1 ps 
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// HMemoryUtils.trashcanNow. Engine heap size: 2,514 MB. GUI used memory: 147 MB. Current time: 11/23/24, 7:50:36 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_MOVE_CURSOR
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: source testbench.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } # run 1000ns 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 1000ns 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 8582.512 ; gain = 36.008 ; free physical = 2788 ; free virtual = 9282 
+// 'd' command handler elapsed time: 6 seconds
+dismissDialog("Run Simulation"); // e (Run Simulation Progress)
+selectButton(RDIResource.GraphicalView_ZOOM_FIT, "Waveform Viewer_zoom_fit"); // B (RDIResource.GraphicalView_ZOOM_FIT, Waveform Viewer_zoom_fit)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,514 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:38 PM PET
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+selectButton(RDIResource.GraphicalView_ZOOM_IN, "Waveform Viewer_zoom_in"); // B (RDIResource.GraphicalView_ZOOM_IN, Waveform Viewer_zoom_in)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_MOVE_CURSOR
+selectButton(RDIResource.GraphicalView_ZOOM_IN, "Waveform Viewer_zoom_in"); // B (RDIResource.GraphicalView_ZOOM_IN, Waveform Viewer_zoom_in)
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_MOVE_CURSOR
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,504 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,504 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 3,548 MB. GUI used memory: 145 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 3,417 MB. GUI used memory: 145 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 3,156 MB. GUI used memory: 145 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,898 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,506 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:42 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 3,548 MB. GUI used memory: 145 MB. Current time: 11/23/24, 7:50:43 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+selectButton(RDIResource.GraphicalView_ZOOM_IN, "Waveform Viewer_zoom_in"); // B (RDIResource.GraphicalView_ZOOM_IN, Waveform Viewer_zoom_in)
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_MOVE_CURSOR
+// HMemoryUtils.trashcanNow. Engine heap size: 2,504 MB. GUI used memory: 144 MB. Current time: 11/23/24, 7:50:45 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 2,513 MB. GUI used memory: 144 MB. Current time: 11/23/24, 8:20:48 PM PET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,513 MB. GUI used memory: 144 MB. Current time: 11/23/24, 8:50:48 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// WARNING: HEventQueue.dispatchEvent() is taking  63647990 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 2,513 MB. GUI used memory: 142 MB. Current time: 11/24/24, 2:37:08 PM PET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM

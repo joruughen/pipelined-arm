@@ -13,7 +13,10 @@ module controller (
 	MemtoRegW,
 	MemtoRegE,
 	PCSrcW, 
-	BranchTakenE
+	BranchTakenE,
+	PCSrcD,
+    PCSrcE,
+    PCSrcM
 );
 	input wire clk;
 	input wire reset;
@@ -27,11 +30,11 @@ module controller (
 	output wire [1:0] ALUControlE;
 	output wire MemWriteM;
 	output wire MemtoRegW;
-	output wire PCSrcW;
+	output wire PCSrcW, PCSrcM, PCSrcE, PCSrcD;
 
     //wires de decode
     
-    wire PCSrcD, RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
+    wire RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
     wire [1:0] ALUControlD;
 
 	
@@ -64,7 +67,6 @@ module controller (
 	
 	
 	
-    wire PCSrcE;
     wire PCSrcEpostCondLogic;
     wire RegWriteE;
     wire RegWriteEpostCondLogic;
@@ -115,7 +117,7 @@ module controller (
 		.FlagsPrima(FlagsPrima)
 	);
 	
-	wire PCSrcM, MemtoRegM, MemWriteM; // RegWriteM definido arriba como output wire
+	wire MemtoRegM, MemWriteM; // RegWriteM definido arriba como output wire
 	
 	//para memory stage
 	flopr #(4) EtoMreg(

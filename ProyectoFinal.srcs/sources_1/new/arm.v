@@ -51,6 +51,9 @@ module arm (
 		.MemWriteM(MemWrite),//
 		.MemtoRegW(MemtoReg),
 		.PCSrcW(PCSrc),
+		.PCSrcE(PCSrcE),
+        .PCSrcD(PCSrcD),
+        .PCSrcM(PCSrcM),
 		//.ExtImmE(ExtImm),
 		.BranchTakenE(BranchTakenE),
 		.MemtoRegE(MemtoRegE)
@@ -100,15 +103,17 @@ module arm (
         .Match_12D_E(Match_12D_E),
         .RegWriteM(RegWriteM), 
         .RegWriteW(RegWriteW), 
-        //.BranchTakenE(BranchTakenE), 
+        .BranchTakenE(BranchTakenE), 
         .MemtoRegE(MemtoRegE),
-        //.PCWrPendingF(PCWrPendingF), 
-        //.PCSrcW(PCSrcW),
+        .PCSrcW(PCSrcW),
+        .PCSrcE(PCSrcE),
+        .PCSrcD(PCSrcD),
+        .PCSrcM(PCSrcM),
         .ForwardAE(ForwardAE), 
         .ForwardBE(ForwardBE),
         .StallF(StallF), 
         .StallD(StallD), 
-        // FlushD(FlushD), 
+        .FlushD(FlushD), 
         .FlushE(FlushE)
         );
 endmodule
