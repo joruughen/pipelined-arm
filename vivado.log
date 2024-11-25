@@ -3253,3 +3253,7 @@ source testbench.tcl
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
 launch_simulation: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 8582.512 ; gain = 36.008 ; free physical = 2788 ; free virtual = 9282
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 24 14:38:08 2024...

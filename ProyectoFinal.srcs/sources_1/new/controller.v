@@ -16,10 +16,11 @@ module controller (
 	BranchTakenE,
 	PCSrcD,
     PCSrcE,
-    PCSrcM
+    PCSrcM,
+    FlushE
 );
 	input wire clk;
-	input wire reset;
+	input wire reset, FlushE;
 	//señales para decode stage
 	input wire [31:0] InstrD;
 	
@@ -86,11 +87,13 @@ module controller (
     
     
     
-    flopr #(14) DToEreg(
+    floprc #(14) DToEreg(
         .clk(clk), 
         .reset(reset), 
         .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD}), 
-        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE}));
+        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE}),
+        .clear(FlushE)
+    );
     
     flopr #(4) FlagEreg(
         .clk(clk), 

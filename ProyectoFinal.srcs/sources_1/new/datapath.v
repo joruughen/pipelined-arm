@@ -13,7 +13,8 @@ module datapath (
 	InstrF,
 	ALUOutM,
 	WriteDataE,
-	ReadDataM, 
+	ReadDataM,
+	InstrD,
 	ExtImmD, // para el register de decode a execute
 	//CondD, // bits 15:12 de InstrD
 	RD1D, // ReadData1 de register file
@@ -31,7 +32,8 @@ module datapath (
     Match_12D_E,
     StallF,
     StallD,
-    FlushE
+    FlushE,
+    FlushD
 		
 	//
 );
@@ -41,7 +43,7 @@ module datapath (
     output wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W, Match_12D_E;
         
     input wire [1:0] ForwardAE, ForwardBE;
-    input wire MemtoRegE, StallF, StallD, FlushE;
+    input wire MemtoRegE, StallF, StallD, FlushE, FlushD;
     
     //
     //Execute signals
@@ -77,6 +79,7 @@ module datapath (
 	output wire [3:0] ALUFlags;
 	output wire [31:0] PCF;
 	input wire [31:0] InstrF;
+	output wire [31:0] InstrD;
 	output wire [31:0] ALUOutM;
 	output wire [31:0] WriteDataE;
 	input wire [31:0] ReadDataM;
@@ -136,13 +139,14 @@ module datapath (
 	);
 	
 	
-	wire [31:0] InstrD;
 	// cambiar a rc
-	flopr #(32) F_to_D (
+	flopenrc #(32) F_to_D (
 	   .clk(clk),
 	   .reset(reset),
 	   .d(InstrF),
-	   .q(InstrD)
+	   .q(InstrD),
+	   .en(~StallD),
+	   .clear(FlushD)
 	);
 	
 
@@ -160,15 +164,15 @@ module datapath (
 	//assign CondD = InstrD[31:28];
 
 	mux2 #(4) ra1mux(
-		.d0(InstrF[19:16]),
+		.d0(InstrD[19:16]),
 		.d1(4'b1111),
 		.s(RegSrcD[0]),
 		.y(RA1D)
 	);
 	
 	mux2 #(4) ra2mux(
-		.d0(InstrF[3:0]),
-		.d1(InstrF[15:12]),
+		.d0(InstrD[3:0]),
+		.d1(InstrD[15:12]),
 		.s(RegSrcD[1]),
 		.y(RA2D)
 	);
@@ -188,7 +192,7 @@ module datapath (
 	);
 	
 	extend ext(
-		.Instr(InstrF[23:0]),
+		.Instr(InstrD[23:0]),
 		.ImmSrc(ImmSrcD),
 		.ExtImm(ExtImmD)
 	);
@@ -197,23 +201,26 @@ module datapath (
 	
 	//Flops Execute
 	
-	flopr #(32) rd1reg(
+	floprc #(32) rd1reg(
         .clk(clk), 
         .reset(reset), 
         .d(RD1D), 
-        .q(RD1E)
+        .q(RD1E),
+        .clear(FlushE)
     );
-    flopr #(32) rd2reg(
+    floprc #(32) rd2reg(
         .clk(clk), 
         .reset(reset), 
         .d(RD2D), 
-        .q(RD2E)
+        .q(RD2E),
+        .clear(FlushE)
     );
-    flopr #(32) immreg(
+    floprc #(32) immreg(
         .clk(clk), 
         .reset(reset), 
         .d(ExtImmD), 
-        .q(ExtImmE)
+        .q(ExtImmE),
+        .clear(FlushE)
     );
     /*flopr #(4) wa3ereg(
         .clk(clk), 

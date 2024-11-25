@@ -28,7 +28,7 @@ module hazard(
     input wire Match_1E_M, Match_1E_W, Match_2E_M,Match_2E_W, Match_12D_E;
     input wire RegWriteM, RegWriteW;
     input wire MemtoRegE;
-    input wire PCSrcD, PCSrcE,PCSrcM, PCSrcW;
+    input wire PCSrcD, PCSrcE, PCSrcM, PCSrcW;
     input wire BranchTakenE;
     output reg [1:0] ForwardAE, ForwardBE;
     output wire StallF, StallD;

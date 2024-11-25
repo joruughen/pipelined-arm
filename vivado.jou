@@ -190,3 +190,4 @@ close_sim
 launch_simulation
 launch_simulation
 source testbench.tcl
+close_sim
