@@ -17,7 +17,14 @@ module controller (
 	PCSrcD,
     PCSrcE,
     PCSrcM,
-    FlushE
+    FlushE,
+    ShiftD,
+	NE,
+	LongE,
+	SignedE,
+	CarryE, 
+	InvE,
+	FlagsPrima
 );
 	input wire clk;
 	input wire reset, FlushE;
@@ -28,15 +35,19 @@ module controller (
 	output wire RegWriteW, RegWriteM;
 	output wire [1:0] ImmSrcD;
 	output wire ALUSrcE;
-	output wire [1:0] ALUControlE;
+	output wire [2:0] ALUControlE;
 	output wire MemWriteM;
 	output wire MemtoRegW;
 	output wire PCSrcW, PCSrcM, PCSrcE, PCSrcD;
+	output wire ShiftD, NE, LongE, SignedE, CarryE, InvE;
+	wire NoWD;
+
 
     //wires de decode
     
     wire RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
-    wire [1:0] ALUControlD;
+    wire ND, LongD, SignedD, CarryD, InvD, NoWD;
+    wire [2:0] ALUControlD;
 
 	
 
@@ -49,6 +60,7 @@ module controller (
 	
 	
 	input wire [3:0] ALUFlags;
+	
 
 	decode dec(
 		.Op(InstrD[27:26]),
@@ -63,7 +75,14 @@ module controller (
 		.ImmSrc(ImmSrcD),
 		.RegSrc(RegSrcD),
 		.ALUControl(ALUControlD),
-		.Branch(BranchD)
+		.Branch(BranchD),
+		.Shift(ShiftD),
+        .N(ND),
+        .Long(LongD),
+        .Signed(SignedD),
+        .Carry(CarryD), 
+        .Inv(InvD),
+        .NoW(NoWD)
 	);
 	
 	
@@ -79,15 +98,14 @@ module controller (
     wire [1:0] FlagWriteE;
     wire [3:0] CondE;
     assign CondE = InstrD[31:28];
-    wire [3:0] FlagsE;
-    wire [3:0] FlagsPrima;
-    wire [1:0] ALUControlE;
+    output wire [3:0] FlagsPrima;
+    wire [2:0] ALUControlE;
     
 
     
     
     
-    floprc #(14) DToEreg(
+    floprc #(14) DToEreg( // cambiar a 8
         .clk(clk), 
         .reset(reset), 
         .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD}), 
@@ -95,12 +113,15 @@ module controller (
         .clear(FlushE)
     );
     
-    flopr #(4) FlagEreg(
-        .clk(clk), 
-        .reset(reset), 
-        .d(FlagsPrima), 
-        .q(FlagsE));
-  
+    floprc #(5) DToEAluC(
+        .clk(clk),
+        .reset(reset),
+        .d({ND, LongD, SignedD, CarryD, InvD, NoWD}),
+        .q({NE, LongE, SignedE, CarryE, InvE, NoWE}),
+        .clear(FlushE)
+    );
+    
+
  
 	condlogic cl(
 		.clk(clk),
@@ -111,13 +132,14 @@ module controller (
 		.PCS(PCSrcE),
 		.RegW(RegWriteE),
 		.MemW(MemWriteE),
+		.NoW(NoWE),
 		.PCSrc(PCSrcEpostCondLogic),
 		.RegWrite(RegWriteEpostCondLogic),
 		.MemWrite(MemWriteEpostCondLogic),
 		.Branch(BranchE),
 		.BranchTakenE(BranchTakenE),
-		.FlagsE(FlagsE),
-		.FlagsPrima(FlagsPrima)
+		.FlagsPrima(FlagsPrima),
+		.FlushE(FlushE)
 	);
 	
 	wire MemtoRegM, MemWriteM; // RegWriteM definido arriba como output wire

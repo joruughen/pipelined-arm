@@ -38,6 +38,12 @@ module arm (
     wire Match_12D_E, FlushE, StallF, StallD;
 		//
 	
+	//para instrucciones 
+	wire NE, LongE, SignedE, CarryE, InvE;
+	wire [3:0] FlagsPrima;
+	//
+	
+	
 	controller c(
 		.clk(clk),
 		.reset(reset),
@@ -58,7 +64,13 @@ module arm (
 		//.ExtImmE(ExtImm),
 		.BranchTakenE(BranchTakenE),
 		.MemtoRegE(MemtoRegE),
-		.FlushE(FlushE)
+		.FlushE(FlushE),
+		.NE(NE),
+		.LongE(LongE),
+		.SignedE(SignedE),
+		.CarryE(CarryE),
+		.InvE(InvE),
+		.FlagsPrima(FlagsPrima)		
 	);
 	datapath dp(
 		.clk(clk),
@@ -92,7 +104,15 @@ module arm (
         .ForwardBE(ForwardBE),
 		.StallF(StallF),
 		.StallD(StallD),
-		.FlushE(FlushE)
+		.FlushE(FlushE),
+		//
+		//Para las instrucciones
+		.N(NE), 
+		.Long(LongE),
+		.Signed(SignedE),
+		.Carry(CarryE), 
+		.Inv(InvE),
+		.FlagsPrima(FlagsPrima)
 		//
 	);
 	

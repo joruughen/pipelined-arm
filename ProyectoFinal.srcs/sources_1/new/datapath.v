@@ -33,10 +33,22 @@ module datapath (
     StallF,
     StallD,
     FlushE,
-    FlushD
-		
+    FlushD,
+    //para instrucciones
+    N, 
+	Long,
+	Signed,
+	Carry, 
+	Inv,
+	FlagsPrima
 	//
 );
+
+    //Para las instrucciones
+    input wire [3:0] FlagsPrima;
+    input wire  N, Long, Signed, Carry, Inv;
+    
+    //
 
     //Hazard perdon por el desorden
     
@@ -114,7 +126,7 @@ module datapath (
 		.s(PCSrcW),
 		.y(PCNext)
 	);
-	//assign BranchTakenE = 0;// cambiar tempora
+	
 	
 	mux2 #(32) pcmux2(
 		.d0(PCNext),
@@ -122,8 +134,7 @@ module datapath (
 		.s(BranchTakenE),
 		.y(PC)
 	);
-	// wire StallF;
-	// assign StallF = 0;// cambiar tempora
+	
 	flopenr #(32) pcreg(
 		.clk(clk),
 		.reset(reset),
@@ -278,7 +289,14 @@ module datapath (
 		SrcBE,
 		ALUControlE,
 		ALUResultE,
-		ALUFlags
+		ALUFlags,
+		N,
+		Now,
+		Long,
+		Signed,
+		Carry,
+		Inv,
+		FlagsPrima
 	);
 	
     //	Memory Stage
