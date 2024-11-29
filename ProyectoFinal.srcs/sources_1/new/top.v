@@ -3,14 +3,15 @@ module top (
 	reset,
 	WriteData,
 	DataAdr,
-	MemWrite
+	MemWrite,
+	PC
 );
 	input wire clk;
 	input wire reset;
 	output wire [31:0] WriteData;
 	output wire [31:0] DataAdr;
 	output wire MemWrite;
-	wire [31:0] PC;
+	output wire [31:0] PC;
 	wire [31:0] InstrF;
 	wire [31:0] ReadData;
 	arm arm(

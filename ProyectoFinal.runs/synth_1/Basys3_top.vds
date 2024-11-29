@@ -1,0 +1,284 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Nov 28 19:44:55 2024
+# Process ID: 110119
+# Current directory: /home/jorughen/Desktop/pipelined-arm/ProyectoFinal.runs/synth_1
+# Command line: vivado -log Basys3_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Basys3_top.tcl
+# Log file: /home/jorughen/Desktop/pipelined-arm/ProyectoFinal.runs/synth_1/Basys3_top.vds
+# Journal file: /home/jorughen/Desktop/pipelined-arm/ProyectoFinal.runs/synth_1/vivado.jou
+# Running On        :archlinux
+# Platform          :unknown
+# Operating System  :unknown
+# Processor Detail  :AMD Ryzen 5 7530U with Radeon Graphics
+# CPU Frequency     :3015.473 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :16137 MB
+# Swap memory       :4294 MB
+# Total Virtual     :20432 MB
+# Available Virtual :14262 MB
+#-----------------------------------------------------------
+source Basys3_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1433.176 ; gain = 0.023 ; free physical = 2500 ; free virtual = 13265
+Command: synth_design -top Basys3_top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Device 21-9227] Part: xc7a35tcpg236-1 does not have CEAM library.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 110160
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2177.961 ; gain = 419.746 ; free physical = 1407 ; free virtual = 12171
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Basys3_top' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/clk_divider.v:17]
+INFO: [Synth 8-6157] synthesizing module 'dff' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/clk_divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dff' (0#1) [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/clk_divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (0#1) [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/clk_divider.v:17]
+INFO: [Synth 8-6157] synthesizing module 'decoder' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'decoder' (0#1) [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+WARNING: [Synth 8-6104] Input port 'enable' has an internal driver [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'Basys3_top' (0#1) [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+WARNING: [Synth 8-3848] Net WriteData in module/entity Basys3_top does not have driver. [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:7]
+WARNING: [Synth 8-3848] Net DataAdr in module/entity Basys3_top does not have driver. [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:8]
+WARNING: [Synth 8-3848] Net MemWrite in module/entity Basys3_top does not have driver. [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:9]
+WARNING: [Synth 8-3848] Net PC in module/entity Basys3_top does not have driver. [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:10]
+WARNING: [Synth 8-7129] Port WriteData[31] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[30] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[29] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[28] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[27] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[26] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[25] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[24] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[23] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[22] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[21] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[20] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[19] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[18] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[17] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[16] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[15] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[14] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[13] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[12] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[11] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[10] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[9] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[8] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[7] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[6] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[5] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[4] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[3] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[2] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[1] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[0] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[31] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[30] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[29] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[28] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[27] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[26] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[25] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[24] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[23] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[22] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[21] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[20] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[19] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[18] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[17] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[16] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[15] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[14] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[13] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[12] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[11] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[10] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[9] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[8] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[7] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[6] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[5] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[4] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[3] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[2] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[1] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DataAdr[0] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MemWrite in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[31] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[30] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[29] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[28] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[27] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[26] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[25] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[24] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[23] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[22] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[21] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[20] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[19] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[18] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[17] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[16] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[15] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[14] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[13] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[12] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[11] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[10] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[9] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[8] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[7] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[6] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[5] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[4] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[3] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[2] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[1] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PC[0] in module Basys3_top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2252.930 ; gain = 494.715 ; free physical = 1312 ; free virtual = 12077
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[3] with 1st driver pin 'VCC' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[3] with 2nd driver pin 'enable[3]' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[2] with 1st driver pin 'VCC' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[2] with 2nd driver pin 'enable[2]' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[1] with 1st driver pin 'VCC' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[1] with 2nd driver pin 'enable[1]' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[0] with 1st driver pin 'GND' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/decoder.v:23]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin enable[0] with 2nd driver pin 'enable[0]' [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/sources_1/new/Basys3_top.v:1]
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        4|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2267.773 ; gain = 509.559 ; free physical = 1308 ; free virtual = 12073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2267.773 ; gain = 509.559 ; free physical = 1308 ; free virtual = 12073
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2267.773 ; gain = 0.000 ; free physical = 1308 ; free virtual = 12073
+WARNING: [Netlist 29-1115] Found multi-term driver net: enable[1].
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/constrs_1/new/basys3.xdc]
+Finished Parsing XDC File [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/constrs_1/new/basys3.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jorughen/Desktop/pipelined-arm/ProyectoFinal.srcs/constrs_1/new/basys3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Basys3_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Basys3_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2457.523 ; gain = 0.000 ; free physical = 1240 ; free virtual = 12005
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2457.523 ; gain = 0.000 ; free physical = 1240 ; free virtual = 12005
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2457.523 ; gain = 699.309 ; free physical = 1255 ; free virtual = 12020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1255 ; free virtual = 12020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1255 ; free virtual = 12020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1253 ; free virtual = 12019
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 27    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design Basys3_top has port enable[3] driven by constant 1
+WARNING: [Synth 8-3917] design Basys3_top has port enable[2] driven by constant 1
+WARNING: [Synth 8-3917] design Basys3_top has port enable[1] driven by constant 1
+WARNING: [Synth 8-3917] design Basys3_top has port enable[0] driven by constant 0
+WARNING: [Synth 8-7129] Port WriteData[31] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[30] in module Basys3_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port WriteData[29] in module Basys3_top is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1250 ; free virtual = 12020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1255 ; free virtual = 12024
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1255 ; free virtual = 12024
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2473.527 ; gain = 715.312 ; free physical = 1255 ; free virtual = 12024
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-11584] pin enable[3] is connected to multiple driven net where the other driver is constant
+ERROR: synthesis optimization failed, fatal insert_io failure.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2473.527 ; gain = 525.562 ; free physical = 1258 ; free virtual = 12028
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 111 Warnings, 8 Critical Warnings and 2 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 28 19:45:22 2024...
