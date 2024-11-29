@@ -25,33 +25,33 @@ module decode (
 	input wire [3:0] Rd;
 	output reg [1:0] FlagW;
 	output wire PCS;
-	output wire RegW;
+	output wire [1:0] RegW;
 	output wire MemW;
 	output wire MemtoReg;
 	output wire ALUSrc;
 	output wire [1:0] ImmSrc;
-	output wire [1:0] RegSrc;
+	output wire [5:0] RegSrc;
 	output wire Shift;
 	output reg [2:0] ALUControl;
 	output wire N, NoW, Long, Signed, Carry, Inv;
-	reg [11:0] controls;
+	reg [15:0] controls;
 	reg [5:0] alucontrols;
 	output wire Branch;
-	wire ALUOp;
+	wire [1:0] ALUOp;
 	always @(*)
 		casex (Op)
 			2'b00:
 				if (Funct[5])
-					controls = 12'b00_00_1_0_1_0_0_01_0;
+					controls = 17'b00xxx0_00_1_0_01_0_0_01_0;
 				else
-					controls = 12'b00_00_0_0_1_0_0_01_1;
+					controls = 17'b000010_00_0_0_01_0_0_01_1;
 			2'b01:
 				if (Funct[0])
-					controls = 12'b00_01_1_1_1_0_0_00_0;
+					controls = 17'b00xxxx_01_1_1_01_0_0_00_0;
 				else
-					controls = 12'b10_01_1_1_0_1_0_00_0;
-			2'b10: controls = 12'b01_10_1_0_0_0_1_00_0;
-			default: controls = 12'bxxxxxxxxxxxx;
+					controls = 17'b10xxxx_01_1_1_00_1_0_00_0;
+			2'b10: controls = 17'b01xxxx_10_1_0_00_0_1_00_0;
+			default: controls = 17'bxxxxxxxxxxxxx;
 		endcase
 	assign {RegSrc, ImmSrc, ALUSrc, MemtoReg, RegW, MemW, Branch, ALUOp, Shift} = controls;
 	
@@ -108,7 +108,7 @@ module decode (
 			FlagW[0] = Funct[0];
 		end
 		else begin
-			ALUControl = 2'b00;
+			ALUControl = 3'b000;
 			FlagW = 2'b00;
 		end
 		end

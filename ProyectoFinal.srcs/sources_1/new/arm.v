@@ -17,14 +17,14 @@ module arm (
 	output wire [31:0] WriteData;
 	input wire [31:0] ReadData;
 	wire [3:0] ALUFlags;
-	wire RegWriteW;//RegWriteW
-	wire RegWriteM;//RegWriteM
+	wire [1:0] RegWriteW;//RegWriteW
+	wire [1:0] RegWriteM;//RegWriteM
 	wire ALUSrc;
 	wire MemtoReg;
 	wire PCSrcW;
-	wire [1:0] RegSrc;
+	wire [5:0] RegSrc;
 	wire [1:0] ImmSrc;
-	wire [1:0] ALUControl;
+	wire [2:0] ALUControl;
 	wire [31:0] ExtImm;
 	wire [31:0] RD1D;
 	wire [31:0] RD2D;
@@ -35,7 +35,7 @@ module arm (
 	//Para Hazard Forwarding
 	wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
     wire [1:0] ForwardAE, ForwardBE;
-    wire Match_12D_E, FlushE, StallF, StallD;
+    wire Match_12D_E, FlushE, StallF, StallD, FlushD;
 		//
 	
 	//para instrucciones 
@@ -94,6 +94,7 @@ module arm (
 		.RD1D(RD1D), 
 		.RD2D(RD2D),
 		.BranchTakenE(BranchTakenE),
+		.MemtoRegE(MemtoRegE),
 		//Para Hazard Forwarding
 		.Match_1E_M(Match_1E_M), 
         .Match_1E_W(Match_1E_W), 
@@ -105,6 +106,7 @@ module arm (
 		.StallF(StallF),
 		.StallD(StallD),
 		.FlushE(FlushE),
+		.FlushD(FlushD),
 		//
 		//Para las instrucciones
 		.N(NE), 

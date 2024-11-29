@@ -62,6 +62,7 @@ module datapath (
     wire [31:0] RD1E;
 	wire [31:0] RD2E;
 	wire [31:0] ExtImmE;
+	wire [3:0] WA3D;
 	wire [3:0] WA3E;
 	wire [3:0] RA1E;
 	wire [3:0] RA2E;
@@ -81,11 +82,11 @@ module datapath (
 
 	input wire clk;
 	input wire reset;
-	input wire [1:0] RegSrcD;
-	input wire RegWriteW;
+	input wire [5:0] RegSrcD;
+	input wire [1:0] RegWriteW;
 	input wire [1:0] ImmSrcD;
 	input wire ALUSrcE;
-	input wire [1:0] ALUControlE;
+	input wire [2:0] ALUControlE;
 	input wire MemtoRegW;
 	input wire PCSrcW;
 	output wire [3:0] ALUFlags;
@@ -174,19 +175,29 @@ module datapath (
     //antes en assign CondD = InstrD[15:12];
 	//assign CondD = InstrD[31:28];
 
-	mux2 #(4) ra1mux(
+	mux3 #(4) ra1mux(
 		.d0(InstrD[19:16]),
 		.d1(4'b1111),
-		.s(RegSrcD[0]),
+		.d2(InstrD[3:0]),
+		.s(RegSrcD[5:4]),
 		.y(RA1D)
 	);
 	
-	mux2 #(4) ra2mux(
+	mux3 #(4) ra2mux(
 		.d0(InstrD[3:0]),
 		.d1(InstrD[15:12]),
-		.s(RegSrcD[1]),
+		.d2(InstrD[11:8]),
+		.s(RegSrcD[3:2]),
 		.y(RA2D)
 	);
+	
+	// mux2 #(4) ra3mux(
+	   //.d0(InstrD[15:12]),
+	   //.d1(InstrD[11:8]),
+	   //.s(RegSrcD[1]),
+	   //.y(RA3D)
+	//);
+	
 	wire [31:0] PCPlus8D;
 	assign PCPlus8D = PCPlus4F;
 	
@@ -233,14 +244,13 @@ module datapath (
         .q(ExtImmE),
         .clear(FlushE)
     );
-    /*flopr #(4) wa3ereg(
+    flopr #(4) wa3ereg(
         .clk(clk), 
         .reset(reset), 
         .d(InstrD[15:12]), 
         .q(WA3E)
     );
-    */
-    assign WA3E = InstrD[15:12];//cambio
+    //assign WA3E = InstrD[15:12];//cambio
     
     flopr #(4) ra1reg(
         .clk(clk), 

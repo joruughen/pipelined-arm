@@ -31,8 +31,8 @@ module controller (
 	//señales para decode stage
 	input wire [31:0] InstrD;
 	
-	output wire [1:0] RegSrcD;
-	output wire RegWriteW, RegWriteM;
+	output wire [5:0] RegSrcD;
+	output wire [1:0] RegWriteW, RegWriteM;
 	output wire [1:0] ImmSrcD;
 	output wire ALUSrcE;
 	output wire [2:0] ALUControlE;
@@ -45,7 +45,8 @@ module controller (
 
     //wires de decode
     
-    wire RegWriteD, MemWriteD, MemtoRegD, ALUSrcD, BranchD;
+    wire [1:0] RegWriteD;
+    wire MemWriteD, MemtoRegD, ALUSrcD, BranchD;
     wire ND, LongD, SignedD, CarryD, InvD, NoWD;
     wire [2:0] ALUControlD;
 
@@ -88,8 +89,8 @@ module controller (
 	
 	
     wire PCSrcEpostCondLogic;
-    wire RegWriteE;
-    wire RegWriteEpostCondLogic;
+    wire [1:0] RegWriteE;
+    wire [1:0] RegWriteEpostCondLogic;
     output wire MemtoRegE;
     wire MemWriteE;
     wire MemWriteEpostCondLogic;
@@ -97,7 +98,7 @@ module controller (
     wire ALUSrcE;
     wire [1:0] FlagWriteE;
     wire [3:0] CondE;
-    assign CondE = InstrD[31:28];
+    // assign CondE = InstrD[31:28];
     output wire [3:0] FlagsPrima;
     wire [2:0] ALUControlE;
     
@@ -105,15 +106,15 @@ module controller (
     
     
     
-    floprc #(14) DToEreg( // cambiar a 8
+    floprc #(16) DToEreg( // cambiar a 8
         .clk(clk), 
         .reset(reset), 
-        .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD}), 
-        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE}),
+        .d({PCSrcD,RegWriteD, MemtoRegD,MemWriteD, ALUControlD,BranchD,ALUSrcD,FlagWriteD,InstrD[31:28]}), 
+        .q({PCSrcE,RegWriteE, MemtoRegE,MemWriteE, ALUControlE,BranchE,ALUSrcE,FlagWriteE,CondE}),
         .clear(FlushE)
     );
     
-    floprc #(5) DToEAluC(
+    floprc #(6) DToEAluC(
         .clk(clk),
         .reset(reset),
         .d({ND, LongD, SignedD, CarryD, InvD, NoWD}),
@@ -145,7 +146,7 @@ module controller (
 	wire MemtoRegM, MemWriteM; // RegWriteM definido arriba como output wire
 	
 	//para memory stage
-	flopr #(4) EtoMreg(
+	flopr #(5) EtoMreg(
         .clk(clk), 
         .reset(reset), 
         .d({PCSrcEpostCondLogic, RegWriteEpostCondLogic, MemtoRegE, MemWriteEpostCondLogic}), 

@@ -22,13 +22,13 @@ module condlogic (
 	input wire [3:0] ALUFlags;
 	input wire [1:0] FlagW;
 	input wire PCS;
-	input wire RegW;
+	input wire [1:0] RegW;
 	input wire MemW;
 	input wire Branch;
 	input wire NoW;
 	input wire FlushE;
 	output wire PCSrc;
-	output wire RegWrite;
+	output wire [1:0] RegWrite;
 	output wire MemWrite;
 	output wire BranchTakenE;
 	output wire [3:0] FlagsPrima;
@@ -57,7 +57,7 @@ module condlogic (
 		.CondEx(CondEx)
 	);
 	assign FlagWrite = FlagW & {2 {CondEx}};
-	assign RegWrite = RegW & CondEx & ~NoW;
+	assign RegWrite = RegW & {CondEx, CondEx} & {~NoW, ~NoW};
 	assign MemWrite = MemW & CondEx;
 	assign PCSrc = PCS & CondEx;
 	assign BranchTakenE = Branch & CondEx;
