@@ -12,8 +12,9 @@ module condlogic (
 	MemWrite,
 	Branch,
 	BranchTakenE,
-	FlagsE,
-	FlagsPrima
+	FlagsPrima,
+	NoW,
+	FlushE
 );
 	input wire clk;
 	input wire reset;
@@ -21,29 +22,32 @@ module condlogic (
 	input wire [3:0] ALUFlags;
 	input wire [1:0] FlagW;
 	input wire PCS;
-	input wire RegW;
+	input wire [1:0] RegW;
 	input wire MemW;
 	input wire Branch;
-	input wire [3:0] FlagsE;
+	input wire NoW;
+	input wire FlushE;
 	output wire PCSrc;
-	output wire RegWrite;
+	output wire [1:0] RegWrite;
 	output wire MemWrite;
 	output wire BranchTakenE;
 	output wire [3:0] FlagsPrima;
 	wire [1:0] FlagWrite;
 	wire [3:0] Flags;
 	wire CondEx;
-	flopenr #(2) flagreg1(
+	flopenrc #(2) flagreg1(
 		.clk(clk),
 		.reset(reset),
 		.en(FlagWrite[1]),
+		.clear(FlushE),
 		.d(ALUFlags[3:2]),
 		.q(Flags[3:2])
 	);
-	flopenr #(2) flagreg0(
+	flopenrc #(2) flagreg0(
 		.clk(clk),
 		.reset(reset),
 		.en(FlagWrite[0]),
+		.clear(FlushE),
 		.d(ALUFlags[1:0]),
 		.q(Flags[1:0])
 	);
@@ -53,7 +57,7 @@ module condlogic (
 		.CondEx(CondEx)
 	);
 	assign FlagWrite = FlagW & {2 {CondEx}};
-	assign RegWrite = RegW & CondEx;
+	assign RegWrite = RegW & {CondEx, CondEx} & {~NoW, ~NoW};
 	assign MemWrite = MemW & CondEx;
 	assign PCSrc = PCS & CondEx;
 	assign BranchTakenE = Branch & CondEx;

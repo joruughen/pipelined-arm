@@ -1,0 +1,222 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Nov 28 16:14:53 2024
+# Process ID: 65361
+# Current directory: /home/melanie/Git/pipelined-arm
+# Command line: vivado ProyectoFinal.xpr
+# Log file: /home/melanie/Git/pipelined-arm/vivado.log
+# Journal file: /home/melanie/Git/pipelined-arm/vivado.jou
+# Running On        :melanie-OMEN-Laptop-15-ek0xxx
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.5 LTS
+# Processor Detail  :Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz
+# CPU Frequency     :3069.284 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :12300 MB
+# Swap memory       :2147 MB
+# Total Virtual     :14447 MB
+# Available Virtual :11222 MB
+#-----------------------------------------------------------
+start_gui
+open_project ProyectoFinal.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/dp/alu/a}} {{/testbench/dut/arm/dp/alu/b}} {{/testbench/dut/arm/dp/alu/Result}} {{/testbench/dut/arm/dp/alu/N}} {{/testbench/dut/arm/dp/alu/NoW}} {{/testbench/dut/arm/dp/alu/Long}} {{/testbench/dut/arm/dp/alu/Signed}} {{/testbench/dut/arm/dp/alu/Carry}} {{/testbench/dut/arm/dp/alu/Inv}} {{/testbench/dut/arm/dp/alu/FlagsPrima[1]}} {{/testbench/dut/arm/dp/alu/condinvb}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/dp/rf/rf}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/InstrF}} 
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/dp/InstrD}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/c/dec/controls}} 
+relaunch_sim
+current_wave_config {Untitled 1}
+add_wave {{/testbench/dut/arm/c/dec/Funct}} 
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/rf/rf}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/Long}} {{/testbench/dut/arm/dp/alu/Signed}} {{/testbench/dut/arm/dp/alu/Carry}} {{/testbench/dut/arm/dp/alu/Inv}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/Result}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/ALUControl}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/b}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/a}} 
+current_wave_config {Untitled 2}
+add_wave {{/testbench/dut/arm/dp/alu/N}} {{/testbench/dut/arm/dp/alu/NoW}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 3}
+add_wave {{/testbench/dut/arm/dp/rf/ra1}} {{/testbench/dut/arm/dp/rf/ra2}} {{/testbench/dut/arm/dp/rf/wa3}} {{/testbench/dut/arm/dp/rf/wd3}} 
+current_wave_config {Untitled 3}
+add_wave {{/testbench/dut/arm/dp/rf/rd1}} {{/testbench/dut/arm/dp/rf/rd2}} 
+relaunch_sim
+current_wave_config {Untitled 3}
+add_wave {{/testbench/dut/arm/dp/InstrF}} {{/testbench/dut/arm/dp/InstrD}} 
+relaunch_sim
+current_wave_config {Untitled 3}
+add_wave {{/testbench/dut/arm/dp/ra1mux/d0}} {{/testbench/dut/arm/dp/ra1mux/d1}} {{/testbench/dut/arm/dp/ra1mux/d2}} {{/testbench/dut/arm/dp/ra1mux/s}} {{/testbench/dut/arm/dp/ra1mux/y}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+close_sim
+launch_simulation
+source testbench.tcl
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 6}
+add_wave {{/testbench/dut/arm/dp/ra1mux/d0}} {{/testbench/dut/arm/dp/ra1mux/d1}} {{/testbench/dut/arm/dp/ra1mux/d2}} {{/testbench/dut/arm/dp/ra1mux/s}} {{/testbench/dut/arm/dp/ra1mux/y}} 
+relaunch_sim
+current_wave_config {Untitled 6}
+add_wave {{/testbench/dut/arm/dp/InstrF}} {{/testbench/dut/arm/dp/InstrD}} 
+relaunch_sim
+current_wave_config {Untitled 6}
+add_wave {{/testbench/dut/arm/dp/ra1mux/d0}} {{/testbench/dut/arm/dp/ra1mux/d1}} {{/testbench/dut/arm/dp/ra1mux/d2}} {{/testbench/dut/arm/dp/ra1mux/s}} {{/testbench/dut/arm/dp/ra1mux/y}} 
+current_wave_config {Untitled 6}
+add_wave {{/testbench/dut/arm/dp/ra2mux/d0}} {{/testbench/dut/arm/dp/ra2mux/d1}} {{/testbench/dut/arm/dp/ra2mux/d2}} {{/testbench/dut/arm/dp/ra2mux/s}} {{/testbench/dut/arm/dp/ra2mux/y}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 7}
+add_wave {{/testbench/dut/arm/dp/ra1mux}} 
+current_wave_config {Untitled 7}
+add_wave {{/testbench/dut/arm/dp/ra2mux}} 
+relaunch_sim
+current_wave_config {Untitled 7}
+add_wave {{/testbench/dut/arm/dp/RegSrcD}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 8}
+add_wave {{/testbench/dut/arm/dp/ra1mux}} 
+current_wave_config {Untitled 8}
+add_wave {{/testbench/dut/arm/dp/ra2mux}} 
+relaunch_sim
+current_wave_config {Untitled 8}
+add_wave {{/testbench/dut/arm/c/dec/controls}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/rf/rf}} 
+relaunch_sim
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/alu/a}} {{/testbench/dut/arm/dp/alu/b}} {{/testbench/dut/arm/dp/alu/ALUControl}} {{/testbench/dut/arm/dp/alu/Result}} 
+relaunch_sim
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/InstrD}} {{/testbench/dut/arm/dp/InstrF}} 
+relaunch_sim
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/ra1mux/y}} 
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/ra2mux/y}} 
+relaunch_sim
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/ra2mux/d0}} {{/testbench/dut/arm/dp/ra2mux/d1}} {{/testbench/dut/arm/dp/ra2mux/d2}} {{/testbench/dut/arm/dp/ra2mux/s}} {{/testbench/dut/arm/dp/ra2mux/y}} 
+relaunch_sim
+current_wave_config {Untitled 9}
+add_wave {{/testbench/dut/arm/dp/RegSrcD}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 10}
+add_wave {{/testbench/dut/arm/dp/ra1mux}} 
+current_wave_config {Untitled 10}
+add_wave {{/testbench/dut/arm/dp/ra2mux}} 
+relaunch_sim
+current_wave_config {Untitled 10}
+add_wave {{/testbench/dut/arm/c/dec/controls}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 11}
+add_wave {{/testbench/dut/arm/dp/ra1mux}} 
+current_wave_config {Untitled 11}
+add_wave {{/testbench/dut/arm/dp/ra2mux}} 
+relaunch_sim
+current_wave_config {Untitled 11}
+add_wave {{/testbench/dut/arm/c/dec/controls}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/rf/rf}} 
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/InstrD}} {{/testbench/dut/arm/dp/InstrF}} 
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/alu/a}} {{/testbench/dut/arm/dp/alu/b}} {{/testbench/dut/arm/dp/alu/ALUControl}} {{/testbench/dut/arm/dp/alu/Result}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/rf/we3}} {{/testbench/dut/arm/dp/rf/ra1}} {{/testbench/dut/arm/dp/rf/ra2}} {{/testbench/dut/arm/dp/rf/wa3}} {{/testbench/dut/arm/dp/rf/wd3}} 
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/c/RegWriteW}} {{/testbench/dut/arm/c/RegWriteM}} {{/testbench/dut/arm/c/RegWriteEpostCondLogic}} {{/testbench/dut/arm/c/RegWriteE}} {{/testbench/dut/arm/c/RegWriteD}} 
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/c/cl/NoW}} 
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/c/cl/RegW}} 
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/c/cl/CondEx}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/InstrF}} {{/testbench/dut/arm/dp/InstrD}} 
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/ra1mux/y}} {{/testbench/dut/arm/dp/ra1mux/s}} {{/testbench/dut/arm/dp/ra1mux/d2}} {{/testbench/dut/arm/dp/ra1mux/d1}} {{/testbench/dut/arm/dp/ra1mux/d0}} 
+relaunch_sim
+current_wave_config {Untitled 12}
+add_wave {{/testbench/dut/arm/dp/rf/rd1}} {{/testbench/dut/arm/dp/rf/rd2}} 
+relaunch_sim
+close_sim
+launch_simulation
+source testbench.tcl
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/rf/we3}} {{/testbench/dut/arm/dp/rf/ra1}} {{/testbench/dut/arm/dp/rf/ra2}} {{/testbench/dut/arm/dp/rf/wa3}} {{/testbench/dut/arm/dp/rf/wd3}} {{/testbench/dut/arm/dp/rf/r15}} {{/testbench/dut/arm/dp/rf/rd1}} {{/testbench/dut/arm/dp/rf/rd2}} {{/testbench/dut/arm/dp/rf/rf}} 
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/alu/a}} {{/testbench/dut/arm/dp/alu/b}} {{/testbench/dut/arm/dp/alu/ALUControl}} {{/testbench/dut/arm/dp/alu/Result}} 
+relaunch_sim
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/InstrF}} {{/testbench/dut/arm/dp/InstrD}} 
+relaunch_sim
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/MSrcAE}} 
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/MSrcBE}} 
+relaunch_sim
+current_wave_config {Untitled 13}
+add_wave {{/testbench/dut/arm/dp/ResultW}} 
+relaunch_sim

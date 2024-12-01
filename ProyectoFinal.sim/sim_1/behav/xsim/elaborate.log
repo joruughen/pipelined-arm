@@ -5,11 +5,10 @@ Running: /tools/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:93]
-WARNING: [VRFC 10-9543] actual bit length 10 differs from formal bit length 14 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:94]
-WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'd' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:136]
-WARNING: [VRFC 10-9543] actual bit length 3 differs from formal bit length 4 for port 'q' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/controller.v:137]
-WARNING: [VRFC 10-9543] actual bit length 2 differs from formal bit length 3 for port 'ALUControl' [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:279]
-WARNING: [VRFC 10-5021] port 'MemtoRegE' is not connected on this instance [/home/melanie/Git/pipelined-arm/ProyectoFinal.srcs/sources_1/new/arm.v:63]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'rd3' [/home/jorughen/Desktop/Melanie/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:226]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'd' [/home/jorughen/Desktop/Melanie/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:256]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'q' [/home/jorughen/Desktop/Melanie/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:257]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'q' [/home/jorughen/Desktop/Melanie/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:292]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'q' [/home/jorughen/Desktop/Melanie/pipelined-arm/ProyectoFinal.srcs/sources_1/new/datapath.v:361]
 Completed static elaboration
 INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
