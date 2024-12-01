@@ -34,7 +34,7 @@ module arm (
 	
 	//Para Hazard Forwarding
 	wire Match_1E_M, Match_1E_W, Match_2E_M, Match_2E_W;
-    wire [1:0] ForwardAE, ForwardBE;
+    wire [1:0] ForwardAE, ForwardBE, ForwardCE;
     wire Match_12D_E, FlushE, StallF, StallD, FlushD;
 		//
 	
@@ -86,7 +86,7 @@ module arm (
 		.PCF(PC),
 		.InstrF(InstrF),
 		.InstrD(InstrD),
-		.ALUOutM(ALUResult),
+		.ALUOut1M(ALUResult),
 		.WriteDataE(WriteData),
 		.ReadDataM(ReadData),
 		.ExtImmD(ExtImm), 

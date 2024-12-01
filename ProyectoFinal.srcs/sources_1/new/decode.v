@@ -34,18 +34,14 @@ module decode (
 	output wire Shift;
 	output reg [2:0] ALUControl;
 	output wire N, NoW, Long, Signed, Carry, Inv;
-	reg [15:0] controls;
+	reg [16:0] controls;
 	reg [5:0] alucontrols;
 	output wire Branch;
 	wire [1:0] ALUOp;
 	always @(*)
 		casex (Op)
 			2'b00: begin
-			    if (Funct[5:4] == 2'b00) begin
-			        controls = 17'b101001_xx_1_0_x1_0_0_10_0;
-			        controls[6] = Funct[3];
-			    end
-				else if (Funct[5])
+				if (Funct[5])
 					controls = 17'b00xxx0_00_1_0_01_0_0_01_0;
 				else
 					controls = 17'b000010_00_0_0_01_0_0_01_1;
@@ -56,6 +52,11 @@ module decode (
 				else
 					controls = 17'b10xxxx_01_1_1_00_1_0_00_0;
 			2'b10: controls = 17'b01xxxx_10_1_0_00_0_1_00_0;
+			2'b11:
+			     if (Funct[5:4] == 2'b00) begin
+			        controls = 17'b101001_xx_1_0_x1_0_0_10_0;
+			        controls[6] = Funct[3];
+			    end
 			default: controls = 17'bxxxxxxxxxxxxx;
 		endcase
 	assign {RegSrc, ImmSrc, ALUSrc, MemtoReg, RegW, MemW, Branch, ALUOp, Shift} = controls;

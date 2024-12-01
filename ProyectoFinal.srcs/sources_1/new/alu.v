@@ -1,6 +1,6 @@
 module alu(input [31:0] a, b, c, d, input [2:0] ALUControl,
     output reg [31:0] ResultA, ResultB, output wire [3:0] ALUFlags,
-    input N, input NoW, input Long, input Signed, input Carry, input Inv, input [3:0] FlagsPrima);
+    input N, input Long, input Signed, input Carry, input Inv, input [3:0] FlagsPrima);
     
     wire neg, zero, carry, overflow;
     reg [64:0] sum;

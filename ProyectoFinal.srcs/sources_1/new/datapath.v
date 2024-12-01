@@ -12,7 +12,6 @@ module datapath (
 	PCF,
 	InstrF,
 	ALUOut1M,
-	ALUOut2M,
 	WriteDataE,
 	ReadDataM,
 	InstrD,
@@ -65,7 +64,7 @@ module datapath (
 	wire [31:0] ExtImmE;
 	wire [3:0] WA4D;
 	wire [3:0] WA5D;
-	wire [3:0] WA5E;
+	wire [3:0] WA4E;
 	wire [3:0] WA5E;
 	wire [3:0] RA1E;
 	wire [3:0] RA2E;
@@ -98,7 +97,7 @@ module datapath (
 	input wire [31:0] InstrF;
 	output wire [31:0] InstrD;
 	output wire [31:0] ALUOut1M;
-	output wire [31:0] ALUOut2M;
+	wire [31:0] ALUOut2M;
 	output wire [31:0] WriteDataE;
 	input wire [31:0] ReadDataM;
 	output wire [31:0] ExtImmD;
@@ -118,6 +117,7 @@ module datapath (
 	
 	
 	//writeback wa4/4
+	wire [3:0] WA4E;
 	wire [3:0] WA4W;
 	wire [3:0] WA5W;
 	//
@@ -268,7 +268,7 @@ module datapath (
         .clk(clk), 
         .reset(reset), 
         .d(InstrD[15:12]), 
-        .q(W43E)
+        .q(WA4E)
     );
     //assign WA3E = InstrD[15:12];//cambio
     
@@ -323,20 +323,19 @@ module datapath (
 	assign SrcCE = RD3E;
 	
 	alu alu(
-		SrcAE,
-		SrcBE,
-		SrcCE,
-		ALUControlE,
-		ALUResult1E,
-		ALUResult2E,
-		ALUFlags,
-		N,
-		Now,
-		Long,
-		Signed,
-		Carry,
-		Inv,
-		FlagsPrima
+		.a(SrcAE),
+		.b(SrcBE),
+		.c(SrcCE),
+		.ALUControl(ALUControlE),
+		.ResultA(ALUResult1E),
+		.ResultB(ALUResult2E),
+		.ALUFlags(ALUFlags),
+		.N(N),
+		.Long(Long),
+		.Signed(Signed),
+		.Carry(Carry),
+		.Inv(Inv),
+		.FlagsPrima(FlagsPrima)
 	);
 	
     //	Memory Stage
