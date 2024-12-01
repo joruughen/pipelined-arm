@@ -11,7 +11,8 @@ module datapath (
 	ALUFlags,
 	PCF,
 	InstrF,
-	ALUOutM,
+	ALUOut1M,
+	ALUOut2M,
 	WriteDataE,
 	ReadDataM,
 	InstrD,
@@ -62,22 +63,25 @@ module datapath (
     wire [31:0] RD1E;
 	wire [31:0] RD2E;
 	wire [31:0] ExtImmE;
-	wire [3:0] WA3D;
-	wire [3:0] WA3E;
+	wire [3:0] WA4D;
+	wire [3:0] WA5D;
+	wire [3:0] WA5E;
+	wire [3:0] WA5E;
 	wire [3:0] RA1E;
 	wire [3:0] RA2E;
 	
    // wire [3:0] ALUOutM;
 	wire [31:0] SrcAE;
 	wire [31:0] SrcBE;
+	wire [31:0] SrcCE;
     //
     //Memory signals
-    wire [31:0] ALUOutM, WriteDataM;
-	wire [3:0] WA3M;
+    wire [31:0] ALUOut1M, ALUOut2M, WriteDataM;
+	wire [3:0] WA4M, WA5M;
 	//
 	//WriteBack Signals
 	wire [31:0] ReadDataW;
-    wire [31:0] ALUOutW;
+    wire [31:0] ALUOut1W, ALUOut2M;
     //
 
 	input wire clk;
@@ -93,7 +97,8 @@ module datapath (
 	output wire [31:0] PCF;
 	input wire [31:0] InstrF;
 	output wire [31:0] InstrD;
-	output wire [31:0] ALUOutM;
+	output wire [31:0] ALUOut1M;
+	output wire [31:0] ALUOut2M;
 	output wire [31:0] WriteDataE;
 	input wire [31:0] ReadDataM;
 	output wire [31:0] ExtImmD;
@@ -105,25 +110,29 @@ module datapath (
 	
 	// wire [31:0] PCPlus4F;
 
-	wire [31:0] ResultW;
+	wire [31:0] ResultW1;
+	wire [31:0] ResultW2;
 	wire [3:0] RA1D;
 	wire [3:0] RA2D;
+	wire [3:0] RA3D;
 	
 	
-	//writeback wa3
-	wire [3:0] WA3W;
+	//writeback wa4/4
+	wire [3:0] WA4W;
+	wire [3:0] WA5W;
 	//
 	
 	
 	// fetch stage
-	wire [31:0] ALUResultE; // proviene de execute
+	wire [31:0] ALUResult1E; // proviene de execute
+	wire [31:0] ALUResult2E; // proviene de execute
 	input wire BranchTakenE; // proviene de execute
 	wire [31:0] PCPlus4F;
 	wire [31:0] PC;
 	
 	mux2 #(32) pcmux( //BranchE //PCSrcW //
 		.d0(PCPlus4F),
-		.d1(ResultW),
+		.d1(ResultW1),
 		.s(PCSrcW),
 		.y(PCNext)
 	);
@@ -131,7 +140,7 @@ module datapath (
 	
 	mux2 #(32) pcmux2(
 		.d0(PCNext),
-		.d1(ALUResultE),
+		.d1(ALUResult1E),
 		.s(BranchTakenE),
 		.y(PC)
 	);
@@ -191,26 +200,30 @@ module datapath (
 		.y(RA2D)
 	);
 	
-	// mux2 #(4) ra3mux(
-	   //.d0(InstrD[15:12]),
-	   //.d1(InstrD[11:8]),
-	   //.s(RegSrcD[1]),
-	   //.y(RA3D)
-	//);
+	mux2 #(4) ra3mux(
+	   .d0(InstrD[15:12]),
+	   .d1(InstrD[11:8]),
+	   .s(RegSrcD[1]),
+	   .y(RA3D)
+	);
 	
 	wire [31:0] PCPlus8D;
 	assign PCPlus8D = PCPlus4F;
 	
 	regfile rf(
 		.clk(clk),
-		.we3(RegWriteW),
+		.we(RegWriteW),
 		.ra1(RA1D),
 		.ra2(RA2D),
-		.wa3(WA3W),
-		.wd3(ResultW),
+		.ra3(RA3D),
+		.wa4(WA4W),
+		.wa5(WA5W),
+		.wd4(ResultW1),
+		.wd5(ResultW2),
 		.r15(PCPlus8D),
 		.rd1(RD1D),
-		.rd2(RD2D)
+		.rd2(RD2D),
+		.rd3(RD3D)
 	);
 	
 	extend ext(
@@ -237,6 +250,13 @@ module datapath (
         .q(RD2E),
         .clear(FlushE)
     );
+    floprc #(32) rd3reg(
+        .clk(clk), 
+        .reset(reset), 
+        .d(RD3D), 
+        .q(RD3E),
+        .clear(FlushE)
+    );
     floprc #(32) immreg(
         .clk(clk), 
         .reset(reset), 
@@ -244,11 +264,11 @@ module datapath (
         .q(ExtImmE),
         .clear(FlushE)
     );
-    flopr #(4) wa3ereg(
+    flopr #(4) wa4ereg(
         .clk(clk), 
         .reset(reset), 
         .d(InstrD[15:12]), 
-        .q(WA3E)
+        .q(W43E)
     );
     //assign WA3E = InstrD[15:12];//cambio
     
@@ -265,6 +285,12 @@ module datapath (
         .q(RA2E)
     );
 	
+	flopr #(4) ra3reg(
+        .clk(clk), 
+        .reset(reset), 
+        .d(RA3D), 
+        .q(RA3E)
+    );
 	
 
 	
@@ -272,8 +298,8 @@ module datapath (
 	
 	mux3 #(32) MSrcAE(
 		.d0(RD1E),
-		.d1(ResultW),
-		.d2(ALUOutM),
+		.d1(ResultW1),
+		.d2(ALUOut1M),
 		.s(ForwardAE),
 		.y(SrcAE)
 	);
@@ -281,8 +307,8 @@ module datapath (
 	
 	mux3 #(32) MSrcBE(
 		.d0(RD2E),
-		.d1(ResultW),
-		.d2(ALUOutM), /////
+		.d1(ResultW1),
+		.d2(ALUOut1M), /////
 		.s(ForwardBE),
 		.y(WriteDataE)
 	);
@@ -293,12 +319,16 @@ module datapath (
 	    .s(ALUSrcE),
 		.y(SrcBE)
 	);
+	//añadir msrcc con forward signals
+	assign SrcCE = RD3E;
 	
 	alu alu(
 		SrcAE,
 		SrcBE,
+		SrcCE,
 		ALUControlE,
-		ALUResultE,
+		ALUResult1E,
+		ALUResult2E,
 		ALUFlags,
 		N,
 		Now,
@@ -315,9 +345,12 @@ module datapath (
 	
     //Flops Memory
 	
-	flopr #(32) aluresreg(.clk(clk), .reset(reset), .d(ALUResultE), .q(ALUOutM));
+	flopr #(32) alures1reg(.clk(clk), .reset(reset), .d(ALUResult1E), .q(ALUOut1M));
+	flopr #(32) alures2reg(.clk(clk), .reset(reset), .d(ALUResult2E), .q(ALUOut2M));
     flopr #(32) wdreg(.clk(clk), .reset(reset), .d(WriteDataE), .q(WriteDataM));
-    flopr #(4) wa3mreg(.clk(clk), .reset(reset), .d(WA3E), .q(WA3M));
+    flopr #(4) wa4mreg(.clk(clk), .reset(reset), .d(WA4E), .q(WA4M));
+    flopr #(4) wa5mreg(.clk(clk), .reset(reset), .d(WA5E), .q(WA5M));
+    
     
 
     
@@ -325,22 +358,27 @@ module datapath (
 	
     
     // Writeback Stage
-    flopr #(32) aluoutreg(.clk(clk), .reset(reset), .d(ALUOutM), .q(ALUOutW));
+    flopr #(32) aluout1reg(.clk(clk), .reset(reset), .d(ALUOut1M), .q(ALUOut1W));
+    flopr #(32) aluout2reg(.clk(clk), .reset(reset), .d(ALUOut2M), .q(ALUOut2W));
     flopr #(32) rdreg(.clk(clk), .reset(reset), .d(ReadDataM), .q(ReadDataW));
-    flopr #(4) wa3wreg(.clk(clk), .reset(reset), .d(WA3M), .q(WA3W));
+    flopr #(4) wa4wreg(.clk(clk), .reset(reset), .d(WA4M), .q(WA4W));
+    flopr #(4) wa5wreg(.clk(clk), .reset(reset), .d(WA5M), .q(WA5W));
     
     
-    mux2 #(32) resmux(.d0(ALUOutW), .d1(ReadDataW), .s(MemtoRegW), .y(ResultW));	
+    mux2 #(32) res1mux(.d0(ALUOut1W), .d1(ReadDataW), .s(MemtoRegW), .y(ResultW1));	
+    assign ResultW2 = ALUOut2W;
     
     
     //Hazard Forwarding Devolviendo señales
 	
-	assign Match_1E_M = (RA1E == WA3M);
-    assign Match_1E_W = (RA1E == WA3W);
-    assign Match_2E_M = (RA2E == WA3M);
-    assign Match_2E_W = (RA2E == WA3W);
+	assign Match_1E_M = (RA1E == WA4M);
+    assign Match_1E_W = (RA1E == WA4W);
+    assign Match_2E_M = (RA2E == WA4M);
+    assign Match_2E_W = (RA2E == WA4W);
+    
+    // añadir señales para wa5w
 	
-	assign Match_12D_E = (RA1D == WA3E) | (RA2D == WA3E);
+	assign Match_12D_E = (RA1D == WA4E) | (RA2D == WA4E);
 	
 	//
 

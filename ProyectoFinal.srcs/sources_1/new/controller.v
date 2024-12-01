@@ -40,7 +40,6 @@ module controller (
 	output wire MemtoRegW;
 	output wire PCSrcW, PCSrcM, PCSrcE, PCSrcD;
 	output wire ShiftD, NE, LongE, SignedE, CarryE, InvE;
-	wire NoWD;
 
 
     //wires de decode

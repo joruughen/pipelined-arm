@@ -40,11 +40,16 @@ module decode (
 	wire [1:0] ALUOp;
 	always @(*)
 		casex (Op)
-			2'b00:
-				if (Funct[5])
+			2'b00: begin
+			    if (Funct[5:4] == 2'b00) begin
+			        controls = 17'b101001_xx_1_0_x1_0_0_10_0;
+			        controls[6] = Funct[3];
+			    end
+				else if (Funct[5])
 					controls = 17'b00xxx0_00_1_0_01_0_0_01_0;
 				else
 					controls = 17'b000010_00_0_0_01_0_0_01_1;
+			end
 			2'b01:
 				if (Funct[0])
 					controls = 17'b00xxxx_01_1_1_01_0_0_00_0;
@@ -55,7 +60,6 @@ module decode (
 		endcase
 	assign {RegSrc, ImmSrc, ALUSrc, MemtoReg, RegW, MemW, Branch, ALUOp, Shift} = controls;
 	
-	assign {N, NoW, Long, Signed, Carry, Inv} = alucontrols;
 	
 	always @(*) begin
 	   alucontrols = 6'b000000;
@@ -107,10 +111,44 @@ module decode (
 			FlagW[1] = Funct[0];
 			FlagW[0] = Funct[0];
 		end
+		else if (ALUOp == 2'b10) begin
+		  case (Funct[3:1])
+		      3'b000: begin
+		          ALUControl = 3'b101;
+		          alucontrols = 6'b0000xx;
+		      end
+		      3'b001: begin
+		          ALUControl = 3'b110;
+		          alucontrols = 6'b0000xx;
+		      end
+		      3'b011: begin
+		          ALUControl = 3'b110;
+		          alucontrols = 6'b1000xx;
+		      end
+		      3'b100: begin
+		          ALUControl = 3'b101;
+		          alucontrols = 6'b0010xx;
+		      end
+		      3'b101: begin
+		          ALUControl = 3'b110;
+		          alucontrols = 6'b0010xx;
+		      end
+		      3'b110: begin
+		          ALUControl = 3'b101;
+		          alucontrols = 6'b0011xx;
+		      end
+		      3'b111: begin
+		          ALUControl = 3'b110;
+		          alucontrols = 6'b0011xx;
+		      end
+		  endcase
+		  FlagW = 2'b00;
+		end
 		else begin
 			ALUControl = 3'b000;
 			FlagW = 2'b00;
 		end
 		end
+   	assign {N, NoW, Long, Signed, Carry, Inv} = alucontrols;
 	assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
 endmodule
